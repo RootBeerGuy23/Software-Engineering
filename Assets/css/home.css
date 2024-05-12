@@ -7,8 +7,39 @@
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
-    font-family: 'kenia', sans-serif, 'Roboto slab';
+    font-family: sans-serif, 'Roboto slab';
     text-transform: capitalize;
     outline: none;border:none;
     transition: .2 linear;
+}
+
+body header .navbar{
+    display:flex;
+    background-color: #769FCD;
+}
+
+body header .navbar .logo img{
+    width: 35%;
+    height: 80%;
+    margin-left:20px;
+    padding-top: 10px;
+}
+
+body header .logo{
+    margin-right: -100px;
+}
+
+body header .navbar a{
+    margin-top: 40px;
+    margin-left: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: large;
+    font-family: 'Poppins';
+    font-weight: bolder;
+    color: rgb(255, 255, 255);
+}
+
+body header .navbar a:hover{
+    color: #195496;
 }
