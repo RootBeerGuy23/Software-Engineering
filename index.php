@@ -1,3 +1,15 @@
+<?php
+session_start();
+
+// Memeriksa apakah pengguna sudah login
+if(!isset($_SESSION['username'])){
+    header("location: Auth/MainCheck.php");
+}
+
+// Jika sudah login, tampilkan halaman utama
+echo "Selamat datang, " . $_SESSION['username'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,12 +33,13 @@
                 <a href="index.html" >Home</a>
                 <a href="#contact">Contact</a>
                 <a href="#services">Services</a>
-                <a href="#login">Login</a>
-                <a href="#register">Register</a>
+                <a href="#about">About</a>
             </div>
         </nav>
     </header>
     <div class="word">
+        <?php echo 'Hai,' . $_SESSION['username']; ?>
+        <a href="Auth/Logout.php">Logout</a>
         <h3>"Optimalkan Operasi Gudang dengan Web Storage Management: <br> Solusi Efisien unutk Logistik Modern!"</h3>
         <button type="submit">Explore Now !!!</button>
         <!-- <img src="Assets/img/logistics.jpg" alt=""> -->
@@ -36,7 +49,7 @@
 </div>
     <footer>
         <li>Terms & Conditions</li>
-        <li>Accessbility</li>
+        <li>Accessibility</li>
         <li>FAQ</li>
         <li>Cookies Policy</li>
     </footer>
