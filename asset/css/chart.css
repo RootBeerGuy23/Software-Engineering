@@ -1,0 +1,55 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.chartMenu {
+    width: 100vw;
+    height: 40px;
+    background: #1A1A1A;
+    color: rgba(54, 162, 235, 1);
+  }
+  .chartMenu p {
+    padding: 10px;
+    font-size: 20px;
+  }
+  .chartCard {
+    width: 100vw;
+    height: calc(100vh - 40px);
+    background: rgba(54, 162, 235, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .chartBox {
+    width: 700px;
+    height: 350px;
+    padding: 20px;
+    border-radius: 20px;
+    border: none;
+    background: white;
+  }
+
+  #myChart, #lineChart, #stock1, #stock2{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 400;
+    padding: 10px 25px;
+    border-radius: 6px;
+    box-shadow: -3px -3px 7px #ffffff73, 2px 2px 5px rgb(128 135 148 / 56%);
+  }
+
+  #stock{
+    padding: 80px;
+  }
+
+  @media only screen and (max-width: 600px){
+    .chartBox {
+        width: 90%;
+        height: 45%
+    }
+  }

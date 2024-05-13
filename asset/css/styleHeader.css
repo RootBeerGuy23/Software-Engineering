@@ -1,0 +1,214 @@
+@import url('https:fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    color: white;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.sidebar_btn{
+    position: absolute;
+    top: 15px;
+    left: 45px;
+    height: 45px;
+    width: 45px;
+    text-align: center;
+    background: white;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: left 0.4s ease;
+}
+
+.sidebar_btn.click{
+    left: 320px;
+}
+
+.sidebar_btn span{
+    color: black;
+    font-size: 28px;
+    line-height: 45px;
+}
+
+.sidebar_btn.click span:before{
+    content: '\f00d';
+}
+
+.sidebar{
+    position: fixed;
+    width: 300px;
+    height: 100%;
+    left: -240px;
+    background: #44476A;
+    transition: left 0.4s ease;
+}
+
+.sidebar.show{
+    left: 0px;
+}
+
+.sidebar .text{
+    padding-top: 5px;
+    margin-bottom: 50px;
+    padding-left: 40px;
+    color: white;
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 65px;
+    background: #44476A;
+    letter-spacing: 1px;
+}
+
+.sidebar li.profile{
+    position: fixed;
+    /* height: 120px; */
+    width: 300px;
+    left: -200px;
+    bottom: 60px;
+    padding: 10px 14px;
+    overflow: hidden;
+    transition: left 0.4s ease;
+}
+
+.sidebar li.profile.show{
+    left: 0px;
+}
+
+.sidebar .profile .profile_details{
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.sidebar li img{
+    height: 45px;
+    width: 45px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.sidebar li.profile .name,
+.sidebar li.profile .design{
+    font-size: 18px;
+    font-weight: 500;
+    color: white;
+    white-space: nowrap;
+}
+
+.sidebar li.profile .design{
+    font-size: 15px;
+}
+
+.sidebar .profile #log_out{
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    background-color: darkgray;
+    width: 50px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    padding-left: 14px;
+}
+
+nav ul{
+    background: #44476A;
+    height: 100%;
+    width: 100%;
+    list-style: none;
+}
+
+nav ul li{
+    line-height: 60px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+nav ul li.profile{
+    line-height: 28px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+nav ul li:last-child{
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+nav ul li a{
+    position: relative;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding-left: 40px;
+    font-weight: 500;
+    display: block;
+    width: 100%;
+    border-left: 3px solid transparent;
+}
+
+nav ul li.active a{
+    color: cyan;
+    background: #1e1e1e;
+    border-left-color: cyan;
+}
+
+nav ul ul{
+    position: static;
+    display: none;
+}
+
+nav ul .feat-show.show{
+    display: block;
+}
+
+nav ul .serv-show.show1{
+    display: block;
+}
+
+nav ul .manage-show.show2{
+    display: block;
+}
+
+nav ul .invent-show.show3{
+    display: block;
+}
+
+nav ul ul li{
+    line-height: 42px;
+    border-bottom: none;
+}
+
+nav ul ul li a{
+    font-size: 17px;
+    color: #e6e6e6;
+    padding-left: 80px;
+}
+
+nav ul li.active ul li a{
+    color: #e6e6e6;
+    background: #1b1b1b;
+    border-left-color: transparent;
+}
+
+nav ul ul li a:hover{
+    color: cyan!important;
+    background: #1e1e1e!important;
+}
+
+nav ul li a span{
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    font-size: 22px;
+    transition: transform 0.4s;
+}
+
+nav ul li a:hover span{
+    transform: translateY(-50%) rotate(-180deg);
+}
