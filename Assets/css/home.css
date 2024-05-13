@@ -89,7 +89,7 @@ body .word button{
     cursor: pointer;
     border-radius: 20px;
     padding: 10px;
-    
+    color: #f7f7f7;
 }
 
 footer{
