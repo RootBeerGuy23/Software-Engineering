@@ -84,7 +84,12 @@ body .word h3{
 
 body .word button{
     background-color: #769FCD;
-    font-weight: 300;
+    font-weight: bolder;
+    font-style: 'Poppins';
+    cursor: pointer;
+    border-radius: 20px;
+    padding: 10px;
+    
 }
 
 footer{
