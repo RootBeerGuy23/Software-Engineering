@@ -70,9 +70,15 @@ body header .navbar .menu .register:hover{
     color: white;
 }
 
+.content{
+      background-image: url(/Assets/img/logistics.jpg);
+      background-size:cover;
+      min-height: 70vh;
+}
+
 body .word{
     display: flex;
-    margin-top: 255px;
+    margin-top: 65px;
     margin-left: 20px;
     margin-right: 20px;
     justify-content:space-evenly ;
@@ -160,5 +166,64 @@ footer li:hover{
         font-weight: lighter;
         font-size: small;
         margin-bottom: -1px;
+    }
+
+    body .word{
+        margin-top: 20px;
+    }
+
+    .content{
+        background-image: url(/Assets/img/logistics.jpg);
+        background-size:cover;
+        min-height :border;
+    }
+} 
+
+@media screen and (min-width:1000px){
+    .content{
+        background-size: contain;
+    }
+
+    .content .word{
+        margin-top: 20px;
+    }
+}
+
+@media screen and (max-height: 500px) {
+    body header .navbar a{
+        margin-right: -5px;
+        padding-left: 3px;
+        padding-right: 10px;
+        font-size: 80%;
+        margin-top: -25px;
+        margin-right: 10px;
+        font-family: 'Poppins';
+        font-weight: bolder;
+        color: rgb(255, 255, 255);
+    }
+    
+    body header .navbar .logo img{
+        width: 3cm;
+        height: 2cm;
+        padding-top: 10px;
+        margin-left: -10px;
+    }
+
+    body header .navbar .menu .register{
+        background-color: #D9D9D9;
+        color: #323030;
+        padding-top: 2px;
+        padding-left: 5px;
+        padding-right: -5px;
+    }
+    
+    footer{
+        display: none;
+    }
+    .content{
+        scroll-behavior: smooth;
+        background-image: url(/Assets/img/logistics.jpg);
+        background-size:cover;
+        min-width: min-content;
     }
 } 
