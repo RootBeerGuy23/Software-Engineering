@@ -1,5 +1,5 @@
 :root{
-    background-color: #B9D7EA;
+    background-color: #fafafa;
 }
 
 *{
@@ -14,7 +14,7 @@
 }
 
 header{
-    position: fixed;
+    position:relative;
     top: 0;left: 0;right:0;
     background-color: #769FCD;
     padding: 2px;
@@ -70,8 +70,25 @@ body header .navbar .menu .register:hover{
     color: white;
 }
 
+body .word{
+    display: flex;
+    margin-top: 90px;
+    margin-left: 20px;
+    margin-right: 20px;
+    justify-content:space-evenly ;
+}
+
+body .word h3{
+    color: #618BA9;
+}
+
+body .word button{
+    background-color: #769FCD;
+    font-weight: 300;
+}
+
 footer{
-    position: fixed;
+    position:fixed;
     left: 0;right:0;bottom: 0;
     background-color: #769FCD;
     padding: 15px;
@@ -93,7 +110,9 @@ footer li{
     margin-top: -5px;
 }
 
-
+footer li:hover{
+    color: #195496;
+}
 
 @media screen and (max-width: 730px) {
     body header .navbar a{
