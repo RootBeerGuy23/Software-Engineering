@@ -20,6 +20,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($password, $hashed_password)) {
             // Jika cocok, set session dan redirect ke halaman utama
             $_SESSION['username'] = $username;
+            $_SESSION['NIK'] = $row['NIK'];
+
+            // Ambil informasi yang diperlukan untuk log login
+            $user_NIK = $row['NIK'];
+            $ip_address = $_SERVER['REMOTE_ADDR'];
+            $device_info = $_SERVER['HTTP_USER_AGENT'];
+
+            // Query untuk menyimpan informasi login ke dalam tabel login_history
+            $insert_log_query = "INSERT INTO login_history (NIK, ip_address, device_info) VALUES ('$user_NIK', '$ip_address', '$device_info')";
+            $conn->query($insert_log_query);
+            
             header("location: ../index.php");
             exit;
         } else {
