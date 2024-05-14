@@ -1,13 +1,26 @@
 <?php
 session_start();
+include_once 'Auth/conn.php';
 
 // Memeriksa apakah pengguna sudah login
-if(!isset($_SESSION['username'])){
+if(!isset($_SESSION['NIK'])){
     header("location: Auth/MainCheck.php");
+    exit;
 }
 
-// Jika sudah login, tampilkan halaman utama
-echo "Selamat datang, " . $_SESSION['username'];
+$NIK = $_SESSION['NIK'];
+
+// Query untuk mengambil nama pengguna berdasarkan NIK
+$sql = "SELECT username FROM users WHERE NIK='$NIK'";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $username = $row['username'];
+    // Tampilkan nama pengguna
+    echo "Halo, $username!";
+} else {
+    echo "Nama pengguna tidak ditemukan.";
+}
 ?>
 
 <!DOCTYPE html>
@@ -38,7 +51,7 @@ echo "Selamat datang, " . $_SESSION['username'];
         </nav>
     </header>
     <div class="word">
-        <?php echo 'Hai,' . $_SESSION['username']; ?>
+        <?php echo 'Hai,' . $username; ?>
         <a href="Auth/Logout.php">Logout</a>
         <h3>"Optimalkan Operasi Gudang dengan Web Storage Management: <br> Solusi Efisien unutk Logistik Modern!"</h3>
         <button type="submit">Explore Now !!!</button>

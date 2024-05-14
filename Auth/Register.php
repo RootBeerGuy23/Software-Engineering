@@ -22,11 +22,68 @@ session_start()
     }
     ?>
     <form action="../Action/register_process.php" method="post">
+
         <label for="username">Username:</label><br>
         <input type="text" id="username" name="username"><br>
+
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email"><br>
+
+        <label for="name">Date Of Birth:</label><br>
+        <input type="date" id="dob" name="dob"><br>
+
+        <label for="name">NIK:</label><br>
+        <input type="text" id="nik" name="nik" oninput="validateNIK(this);" maxlength="5" disabled><br>
+
+
+    
+        <label for="name">Department:</label><br>
+        <select name="department" id="department">
+            <option value="HR">HR</option>
+            <option value="IT">IT</option>
+            <option value="Finance">Finance</option>
+            <option value="Marketing">Marketing</option>
+        </select><br>
+        
         <label for="password">Password:</label><br>
         <input type="password" id="password" name="password"><br><br>
+
+        <label for="password">Retype Password:</label><br>
+        <input type="password" id="passwordRetype" name="passwordRetype"><br><br>
+
         <input type="submit" value="Registrasi">
     </form>
 </body>
 </html>
+
+
+
+<script>
+// function validateNIK(input) {
+//     // Hapus karakter non-angka dari input
+//     input.value = input.value.replace(/\D/g, '');
+
+//     // Pastikan panjang input tepat 16 digit
+//     if (input.value.length !== 5) {
+//         input.setCustomValidity('NIK harus terdiri dari 16 digit angka.');
+//     } else {
+//         input.setCustomValidity('');
+//     }
+// }
+
+
+function ValidatePassword() {
+    var password = document.getElementById("password").value;
+    var confirmPassword = document.getElementById("passwordRetype").value;
+    if (password != confirmPassword) {
+        alert("Passwords do not match.");
+        // document.getElementById("passwordRetype").setCustomValidity("Passwords Don't Match");
+    } else {
+        document.getElementById("passwordRetype").setCustomValidity('');
+    }
+}
+
+</script>
+
+
+

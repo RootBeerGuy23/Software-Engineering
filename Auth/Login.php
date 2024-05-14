@@ -26,7 +26,7 @@ session_start()
 
     <form action="../Action/login_process.php" method="post">
         <label for="username">Username:</label><br>
-        <input type="text" id="username" name="username"><br>
+        <input type="text" id="username" name="username" value="<?php echo isset($_SESSION['registered_username']) ? $_SESSION['registered_username'] : ''; ?>"><br>
         <label for="password">Password:</label><br>
         <input type="password" id="password" name="password"><br><br>
         <input type="submit" value="Login">
@@ -35,3 +35,8 @@ session_start()
     </form>
 </body>
 </html>
+
+
+<?php 
+unset($_SESSION['registered_username']);
+?>
