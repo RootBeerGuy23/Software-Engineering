@@ -1,5 +1,5 @@
 <?php
-session_start()
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -21,69 +21,98 @@ session_start()
         unset($_SESSION['success_message']); // Hapus pesan sukses setelah ditampilkan
     }
     ?>
-    <form action="../Action/register_process.php" method="post">
+    <form action="../Action/register_process.php" method="post" id="registrationForm">
 
         <label for="username">Username:</label><br>
-        <input type="text" id="username" name="username"><br>
+        <input type="text" id="username" name="username" readonly><br>
 
         <label for="email">Email:</label><br>
         <input type="email" id="email" name="email"><br>
 
-        <label for="name">Date Of Birth:</label><br>
+        <label for="dob">Date Of Birth:</label><br>
         <input type="date" id="dob" name="dob"><br>
 
-        <label for="name">NIK:</label><br>
-        <input type="text" id="nik" name="nik" oninput="validateNIK(this);" maxlength="5" disabled><br>
+        <label for="nik">NIK:</label><br>
+        <input type="text" id="nik" name="nik" oninput="validateNIK(this);" maxlength="5" disabled placeholder="This Is AutoGenerate Function"><br>
 
-
-    
-        <label for="name">Department:</label><br>
+        <label for="department">Department:</label><br>
         <select name="department" id="department">
             <option value="HR">HR</option>
             <option value="IT">IT</option>
             <option value="Finance">Finance</option>
             <option value="Marketing">Marketing</option>
         </select><br>
+
+        <div>
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password"><br><br>
         
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password"><br><br>
-
-        <label for="password">Retype Password:</label><br>
-        <input type="password" id="passwordRetype" name="passwordRetype"><br><br>
-
+            <label for="passwordRetype">Retype Password:</label><br>
+            <input type="password" id="passwordRetype" name="passwordRetype"><br><br>
+        
+            <input type="checkbox" onclick="togglePasswordVisibility()"> Show Password <br><br>
+        </div>
+        
         <input type="submit" value="Registrasi">
     </form>
+
+    <script>
+        function ValidatePassword() {
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("passwordRetype").value;
+            
+            // Regular expression for password validation
+            var passwordRegex = /^(?=.*[A-Z]).{8,}$/;
+            
+            if (!passwordRegex.test(password)) {
+                document.getElementById("password").setCustomValidity("Password must be at least 8 characters long and contain at least one uppercase letter.");
+                return false;
+            } else {
+                document.getElementById("password").setCustomValidity('');
+            }
+
+            if (password !== confirmPassword) {
+                document.getElementById("passwordRetype").setCustomValidity("Passwords do not match.");
+                return false;
+            } else {
+                document.getElementById("passwordRetype").setCustomValidity('');
+            }
+
+            return true;
+        }
+
+        function togglePasswordVisibility() {
+            var passwordField = document.getElementById("password");
+            var confirmPasswordField = document.getElementById("passwordRetype");
+            var passwordFieldType = passwordField.type === "password" ? "text" : "password";
+            passwordField.type = passwordFieldType;
+            confirmPasswordField.type = passwordFieldType;
+        }
+
+        function generateUsername() {
+            var email = document.getElementById("email").value;
+            var usernameField = document.getElementById("username");
+
+            var emailParts = email.split('@');
+            if (emailParts.length > 1) {
+                var nameParts = emailParts[0].split('.');
+                if (nameParts.length > 0) {
+                    var firstName = nameParts[0].replace(/\d+/g, ''); // Remove any digits
+                    usernameField.value = firstName;
+                }
+            }
+        }
+
+        document.getElementById("email").addEventListener('input', generateUsername);
+        document.getElementById("password").addEventListener('input', ValidatePassword);
+        document.getElementById("passwordRetype").addEventListener('input', ValidatePassword);
+
+        document.getElementById("registrationForm").addEventListener('submit', function(event) {
+            if (!ValidatePassword()) {
+                event.preventDefault(); // Prevent form submission
+                alert("Please fix the errors in the form before submitting.");
+            }
+        });
+    </script>
 </body>
 </html>
-
-
-
-<script>
-// function validateNIK(input) {
-//     // Hapus karakter non-angka dari input
-//     input.value = input.value.replace(/\D/g, '');
-
-//     // Pastikan panjang input tepat 16 digit
-//     if (input.value.length !== 5) {
-//         input.setCustomValidity('NIK harus terdiri dari 16 digit angka.');
-//     } else {
-//         input.setCustomValidity('');
-//     }
-// }
-
-
-function ValidatePassword() {
-    var password = document.getElementById("password").value;
-    var confirmPassword = document.getElementById("passwordRetype").value;
-    if (password != confirmPassword) {
-        alert("Passwords do not match.");
-        // document.getElementById("passwordRetype").setCustomValidity("Passwords Don't Match");
-    } else {
-        document.getElementById("passwordRetype").setCustomValidity('');
-    }
-}
-
-</script>
-
-
-
