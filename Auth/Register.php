@@ -6,6 +6,27 @@ session_start();
 <html>
 <head>
     <title>Registrasi Pengguna</title>
+    <style>
+        .captcha-box {
+            display: inline-block;
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            font-weight: bold;
+            font-size: 18px;
+            user-select: none; /* Prevent text selection */
+            cursor: default;    /* Change cursor to default */
+        }
+        .captcha-refresh {
+            cursor: pointer;
+            color: blue;
+            text-decoration: underline;
+            margin-left: 10px;
+            user-select: none; /* Prevent text selection */
+        }
+    </style>
+    <script src="captcha.js"></script> <!-- Update the path to your captcha.js file -->
 </head>
 <body>
     <h2>Registrasi Pengguna</h2>
@@ -52,6 +73,13 @@ session_start();
         
             <input type="checkbox" onclick="togglePasswordVisibility()"> Show Password <br><br>
         </div>
+
+        <div class="captcha-box">
+            <span id="captchaText"></span>
+            <span class="captcha-refresh" onclick="generateCaptcha()"><button type="button">refresh</button></span>
+        </div><br><br>
+        <input type="text" id="captcha" name="captcha" placeholder="Enter the text above"><br>
+        <input type="hidden" id="hiddenCaptcha"><br><br>
         
         <input type="submit" value="Registrasi">
     </form>
