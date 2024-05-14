@@ -29,18 +29,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $insert_log_query = "INSERT INTO login_history (NIK, ip_address, device_info) VALUES ('$user_NIK', '$ip_address', '$device_info')";
             $conn->query($insert_log_query);
             
-            header("location: ../index.php");
+            header("location: ../index");
             exit;
         } else {
             // Password tidak cocok, tampilkan pesan kesalahan
             $_SESSION['error_message'] = "Login gagal. Periksa kembali username dan password Anda.";
-            header("location: ../Auth/Login.php");
+            header("location: ../Auth/Login");
             exit;
         }
     } else {
         // Username tidak ditemukan, tampilkan pesan kesalahan
         $_SESSION['error_message'] = "Tidak Ada username atas Email '$email'";
-        header("location: ../Auth/Login.php");
+        header("location: ../Auth/Login");
         exit;
     }
 }

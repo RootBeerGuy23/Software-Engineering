@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($check_email_result->num_rows > 0) {
         // Username sudah digunakan, set pesan kesalahan dan redirect ke halaman registrasi
         $_SESSION['error_message'] = "Registrasi gagal. Username sudah digunakan, silakan coba lagi dengan username lain.";
-        header("location: ../Auth/Register.php");
+        header("location: ../Auth/Register");
         exit;
     }
 
@@ -44,12 +44,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Registrasi berhasil, set pesan sukses dan redirect ke halaman login
         $_SESSION['success_message'] = "Registrasi berhasil. Silakan login.";
         $_SESSION['registered_username'] = $email;
-        header("location: ../Auth/Login.php");
+        header("location: ../Auth/Login");
         exit;
     } else {
         // Terjadi kesalahan saat menambahkan pengguna baru, set pesan kesalahan dan redirect ke halaman registrasi
         $_SESSION['error_message'] = "Registrasi gagal. Silakan coba lagi.";
-        header("location: ../Auth/Register.php");
+        header("location: ../Auth/Register");
         exit;
     }
 }

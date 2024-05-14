@@ -4,7 +4,7 @@ include_once 'Auth/conn.php';
 
 // Memeriksa apakah pengguna sudah login
 if(!isset($_SESSION['NIK'])){
-    header("location: Auth/MainCheck.php");
+    header("location: Auth/MainCheck");
     exit;
 }
 
@@ -30,7 +30,7 @@ if ($result->num_rows > 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Store Spehere INC</title>
     <link rel="icon" href="Assets/img/logo.png">
-    <link rel="stylesheet" href="Assets/css/home.css">
+    <link rel="stylesheet" href="Assets/css/index.css">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 </head>
 <body>
@@ -52,7 +52,7 @@ if ($result->num_rows > 0) {
     </header>
     <div class="word">
         <?php echo 'Hai,' . $username; ?>
-        <a href="Auth/Logout.php" id="logoutLink">Logout</a>
+        <a href="Auth/Logout" id="logoutLink">Logout</a>
         <h3>"Optimalkan Operasi Gudang dengan Web Storage Management: <br> Solusi Efisien unutk Logistik Modern!"</h3>
         <button type="submit">Explore Now !!!</button>
         <!-- <img src="Assets/img/logistics.jpg" alt=""> -->
@@ -75,7 +75,7 @@ if ($result->num_rows > 0) {
         event.preventDefault();
         var confirmLogout = confirm('Yakin mau logout?');
         if (confirmLogout) {
-            window.location.href = 'Auth/Logout.php';
+            window.location.href = 'Auth/Logout';
         }
     });
 </script>

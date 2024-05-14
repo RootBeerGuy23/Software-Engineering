@@ -31,7 +31,7 @@ session_start()
         <input type="password" id="password" name="password"><br><br>
         <input type="submit" value="Login">
         
-        <p>Belum punya akun? <a href="Register.php">Registrasi di sini</a></p>
+        <p>Belum punya akun? <a href="Register">Registrasi di sini</a></p>
     </form>
 </body>
 </html>
