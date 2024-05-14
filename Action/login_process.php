@@ -3,13 +3,12 @@ include_once '../Auth/conn.php';
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-   $username =  htmlspecialchars($_POST['username']);
+   $email =  htmlspecialchars($_POST['Email']);
    $password =  htmlspecialchars($_POST['password']);
-    // $username = $_POST['username'];
-    // $password = $_POST['password'];
+
 
     // Query untuk mengambil hash password pengguna dari database
-    $sql = "SELECT * FROM users WHERE username='$username'";
+    $sql = "SELECT * FROM users WHERE email='$email'";
     $result = $conn->query($sql);
 
     if ($result->num_rows == 1) {
@@ -19,7 +18,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Memeriksa apakah password cocok dengan hash yang tersimpan
         if (password_verify($password, $hashed_password)) {
             // Jika cocok, set session dan redirect ke halaman utama
-            $_SESSION['username'] = $username;
             $_SESSION['NIK'] = $row['NIK'];
 
             // Ambil informasi yang diperlukan untuk log login
@@ -41,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     } else {
         // Username tidak ditemukan, tampilkan pesan kesalahan
-        $_SESSION['error_message'] = "Tidak Ada username atas Nama '$username'";
+        $_SESSION['error_message'] = "Tidak Ada username atas Email '$email'";
         header("location: ../Auth/Login.php");
         exit;
     }

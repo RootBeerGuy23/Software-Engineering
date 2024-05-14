@@ -25,8 +25,8 @@ session_start()
 
 
     <form action="../Action/login_process.php" method="post">
-        <label for="username">Username:</label><br>
-        <input type="text" id="username" name="username" value="<?php echo isset($_SESSION['registered_username']) ? $_SESSION['registered_username'] : ''; ?>"><br>
+        <label for="Email">Email</label><br>
+        <input type="email" id="Email" name="Email" value="<?php echo isset($_SESSION['registered_username']) ? $_SESSION['registered_username'] : ''; ?>"><br>
         <label for="password">Password:</label><br>
         <input type="password" id="password" name="password"><br><br>
         <input type="submit" value="Login">

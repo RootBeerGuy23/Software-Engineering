@@ -24,10 +24,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Periksa apakah username sudah digunakan
-    $check_username_sql = "SELECT * FROM users WHERE username='$username'";
-    $check_username_result = $conn->query($check_username_sql);
+    $check_email_sql = "SELECT * FROM users WHERE email='$email'";
+    $check_email_result = $conn->query($check_email_sql);
 
-    if ($check_username_result->num_rows > 0) {
+    if ($check_email_result->num_rows > 0) {
         // Username sudah digunakan, set pesan kesalahan dan redirect ke halaman registrasi
         $_SESSION['error_message'] = "Registrasi gagal. Username sudah digunakan, silakan coba lagi dengan username lain.";
         header("location: ../Auth/Register.php");
@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($conn->query($sql) === TRUE) {
         // Registrasi berhasil, set pesan sukses dan redirect ke halaman login
         $_SESSION['success_message'] = "Registrasi berhasil. Silakan login.";
-        $_SESSION['registered_username'] = $username;
+        $_SESSION['registered_username'] = $email;
         header("location: ../Auth/Login.php");
         exit;
     } else {
