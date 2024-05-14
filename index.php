@@ -52,7 +52,7 @@ if ($result->num_rows > 0) {
     </header>
     <div class="word">
         <?php echo 'Hai,' . $username; ?>
-        <a href="Auth/Logout.php">Logout</a>
+        <a href="Auth/Logout.php" id="logoutLink">Logout</a>
         <h3>"Optimalkan Operasi Gudang dengan Web Storage Management: <br> Solusi Efisien unutk Logistik Modern!"</h3>
         <button type="submit">Explore Now !!!</button>
         <!-- <img src="Assets/img/logistics.jpg" alt=""> -->
@@ -68,3 +68,14 @@ if ($result->num_rows > 0) {
     </footer>
 </body>
 </html>
+
+
+<script>
+    document.getElementById('logoutLink').addEventListener('click', function(event) {
+        event.preventDefault();
+        var confirmLogout = confirm('Yakin mau logout?');
+        if (confirmLogout) {
+            window.location.href = 'Auth/Logout.php';
+        }
+    });
+</script>
