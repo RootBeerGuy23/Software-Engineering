@@ -61,22 +61,24 @@ body header .navbar a:hover{
 .container{
     width: 100%;
     height: 430px;
+    margin-top: 20px;
     display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
     font-family: 'Poppins';
     text-align: center;
-    align-items: center;
 }
 
 form{
     background-color: #D6E6F2;
-    height: 800px;
+    height: 700px;
     width: 450px;
 }
 
 form .Login #judul{
-    margin-top: 40px;
-    font-weight: lighter;
+    margin-top: 20px;
+    font-weight: light;
     color: #000000;
 }
 
@@ -85,7 +87,7 @@ form input{
     background-color: #B9D7EA;
     width: 300px;
     margin: 5px;
-    height: 30px;
+    height: 20px;
     font-size: large;
     padding: 20px;
     color: #79A5C5;
@@ -97,19 +99,13 @@ form input{
 
 form button{
     padding: 7px 50px;
-    margin: 20px;
-    margin-top:30px;
     border-radius: 20px;
     background-color: #8fc2e6 ;
     color: whitesmoke;
     cursor: pointer;
     font-size: large;
+    margin-top: -20px;
 }
-
-
-
-
-
 
 button:hover{
     background-color: #769FCD;
@@ -139,8 +135,10 @@ footer .kosong{
 }
 
 .captcha-box {
+    width: 300px;
     display: inline-block;
-    padding: 3px;
+    padding-top: 8px;
+    justify-content: center;
     border: 2px solid #B9D7EA;
     border-radius: 5px;
     background-color: #B9D7EA; 
@@ -151,9 +149,9 @@ footer .kosong{
 }
 .captcha-refresh {
     cursor: pointer;
+    margin-left: 20px;
     color: blue;
     text-decoration: underline;
-    margin-left: 10px;
     user-select: none; /* Prevent text selection */
 }
 

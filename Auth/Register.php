@@ -8,7 +8,7 @@ session_start();
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Store Spehere INC</title>
-        <link rel="icon" href="Assets/img/logo.png">
+        <link rel="icon" href="../Assets/img/logo.png">
         <link rel="stylesheet" href="../Assets/css/register.css">
         <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
         <script src="../Assets/js/captcha.js"></script>
@@ -19,7 +19,7 @@ session_start();
     <nav class="navbar">
         <div class="logo">
         <a href="index.php">
-            <img src="Assets/img/logo.png" alt="Link Logo">
+            <img src="../Assets/img/logo.png" alt="Link Logo">
         </a>
         </div>
         <div class="menu">
@@ -31,7 +31,7 @@ session_start();
     </header>
 
     <div class="container">
-    <h2>Registrasi Pengguna</h2>
+    <h2>Registrarion</h2>
     <?php 
      if(isset($_SESSION['error_message'])) {
         echo "<p style='color:red'>" . $_SESSION['error_message'] . "</p>";
@@ -46,44 +46,29 @@ session_start();
     ?>
     <form action="../Action/register_process.php" method="post" id="registrationForm">
 
-        <label for="username">Username:</label><br>
-        <input type="text" id="username" name="username" readonly autocapitalize="off"><br>
-
-        <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" autocapitalize="off"><br>
-
-        <label for="dob">Date Of Birth:</label><br>
-        <input type="date" id="dob" name="dob"><br>
-
-        <label for="nik">NIK:</label><br>
+        <input type="text" id="username" placeholder="Username" name="username" readonly autocapitalize="off"><br>
+        <input type="email" id="email" placeholder="Email" name="email" autocapitalize="off"><br>
+        <input type="date" id="dob" placeholder="DOB" name="dob"><br>
         <input type="text" id="nik" name="nik" oninput="validateNIK(this);" maxlength="5" disabled placeholder="This Is AutoGenerate Function" autocapitalize="off"><br>
-
-        <label for="department">Department:</label><br>
-        <select name="department" id="department">
+        <select name="department" placeholder="Department" id="department">
             <option value="HR">HR</option>
             <option value="IT">IT</option>
             <option value="Finance">Finance</option>
             <option value="Marketing">Marketing</option>
         </select><br>
-
-        
-            <label for="password">Password:</label><br>
-            <input type="password" id="password" name="password" autocapitalize="off"><br><br>
-        
-            <label for="passwordRetype">Retype Password:</label><br>
-            <input type="password" id="passwordRetype" name="passwordRetype" autocapitalize="off"><br><br>
-        
+            <input type="password" placeholder="Password" id="password" name="password" autocapitalize="off"><br>
+            <input type="password" placeholder="Retype Password"id="passwordRetype" name="passwordRetype" autocapitalize="off"><br>
             <input type="checkbox" onclick="togglePasswordVisibility()"> Show Password <br><br>
        
 
         <div class="captcha-box">
             <span id="captchaText"></span>
             <span class="captcha-refresh" onclick="generateCaptcha()"><button type="button">refresh</button></span>
-        </div><br><br>
+        </div><br>
         <input type="text" id="captcha" name="captcha" placeholder="Enter the text above" autocapitalize="off"><br>
         <input type="hidden" id="hiddenCaptcha"><br><br>
         
-        <input type="submit" value="Registrasi">
+        <button type="submit">Registration</button>
     </form>
     </div>
 

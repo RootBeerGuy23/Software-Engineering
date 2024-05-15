@@ -46,11 +46,8 @@ session_start();
     ?>
 
    
-            <label for="Email">Email</label><br>
-            <input type="email" id="Email" name="Email" value="<?php echo isset($_SESSION['registered_username']) ? $_SESSION['registered_username'] : ''; ?>"><br>
-            <label for="password">Password:</label><br>
-            <input type="password" id="password" name="password"><br><br>
-
+            <input type="email" placeholder="Email" id="Email" name="Email" value="<?php echo isset($_SESSION['registered_username']) ? $_SESSION['registered_username'] : ''; ?>"><br>
+            <input type="password" placeholder="Password" id="password" name="password"><br><br>
             <label for="captcha">Captcha:</label><br>
             <div class="captcha-box">
             <span id="captchaText"></span>
