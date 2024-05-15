@@ -60,7 +60,7 @@ session_start();
             <input type="hidden" id="hiddenCaptcha"><br><br>
              <button type="submit" >Login</button>
 
-            <h4>Don't have account? <a href="register.html">register </a>now</h4>
+            <h4>Don't have account? <a href="Register">register </a>now</h4>
             </form>
                 </div>
               
@@ -75,3 +75,14 @@ session_start();
 <?php 
 unset($_SESSION['registered_username']);
 ?>
+
+
+<script>
+    document.addEventListener("keydown", function(event) {
+    if (event.key === "F12") {
+        event.preventDefault(); // Menghentikan aksi default (buka console developer)
+        alert("Oops, it's not allowed!");
+    }
+});
+
+</script>
