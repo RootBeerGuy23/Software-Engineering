@@ -1,5 +1,5 @@
 :root{
-    background-color: #fafafa;
+    background-color: #B9D7EA;
 }
 
 *{
@@ -18,7 +18,8 @@ header{
     top: 0;left: 0;right:0;
     background-color: #769FCD;
     padding: 2px;
-    display: flex;
+    display:flex;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
 }
@@ -79,33 +80,6 @@ body header .navbar .menu .register:hover{
     color: white;
 }
 
-.content{
-      background-image: url(/Assets/img/logistics.jpg);
-      background-size:cover;
-      min-height: 70vh;
-}
-
-body .word{
-    display: flex;
-    margin-top: 65px;
-    margin-left: 20px;
-    margin-right: 20px;
-    justify-content:space-evenly ;
-}
-
-body .word h3{
-    color: #618BA9;
-}
-
-body .word button{
-    background-color: #769FCD;
-    font-weight: bolder;
-    font-style: 'Poppins';
-    cursor: pointer;
-    border-radius: 20px;
-    padding: 10px;
-    color: #f7f7f7;
-}
 
 footer{
     position:fixed;
@@ -137,9 +111,8 @@ footer li:hover{
 @media screen and (max-width: 730px) {
     header{
         flex-direction: column;
-        
     }
-    
+   
     body header .navbar a{
         margin-right: -5px;
         padding-left: 3px;
