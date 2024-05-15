@@ -31,6 +31,7 @@ if ($result->num_rows > 0) {
     <link rel="stylesheet" href="Assets/css/dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <script src="Assets/js/servertime.js"></script>
 </head>
 <body>
     <header>
@@ -46,7 +47,7 @@ if ($result->num_rows > 0) {
                 <a href="#contact">Contact</a>
                 <a href="#services">Services</a>
                 <a href="#about">About</a>  
-                <li id="gabisadiclick"><i class="fa-solid fa-user"></i> <?php echo 'Hai, ' . $username?><a href="Auth/Logout" id="logoutLink"><i class="fa-solid fa-right-from-bracket"></i><br></a><?php echo date('l,d-m-Y') ?></li>
+                <li id="gabisadiclick"><i class="fa-solid fa-user"></i> <?php echo 'Hai, ' . $username?><a href="Auth/Logout" id="logoutLink"><i class="fa-solid fa-right-from-bracket"></i><br></a><h4 id="server-time"></h4></li>
                 
             </div>
         </nav>
