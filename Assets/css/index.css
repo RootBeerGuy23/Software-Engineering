@@ -24,7 +24,8 @@ header{
 }
 
 body header .navbar{
-    display:contents;
+    display:flex;
+    flex-direction: row;
 }
 
 
