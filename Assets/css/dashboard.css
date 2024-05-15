@@ -1,0 +1,266 @@
+:root{
+    background-color: #fafafa;
+}
+
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: sans-serif, 'Roboto slab';
+    text-transform: capitalize;
+    outline: none;border:none;
+    transition: .2 linear;
+}
+
+header{
+    position:relative;
+    top: 0;left: 0;right:0;
+    background-color: #769FCD;
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+body header .navbar{
+    display:contents;
+}
+
+
+body header .navbar .logo img{
+    width: 3.5cm;
+    height: 2.4cm;
+    padding-top: 10px;
+    padding-left: 35px;
+}
+
+body header .navbar .menu{
+    display: flex;
+    flex-direction: row;
+    margin-top: 35px;
+    margin-left: 10px;
+}
+
+#biruin{
+    color: #195496;
+}
+
+li{
+    list-style: none;
+    margin-left: 10px;
+    padding-left: 10px;
+    margin-right: 10px;
+    padding-right: 20px;
+    font-size: 100%;
+    margin-top: 15px;
+    font-family: 'Poppins';
+    font-weight: bolder;
+    color: rgb(255, 255, 255);
+}
+
+body header .navbar a{
+    margin-left: 10px;
+    padding-left: 10px;
+    margin-right: 10px;
+    padding-right: 20px;
+    font-size: 100%;
+    margin-top: -25px;
+    font-family: 'Poppins';
+    font-weight: bolder;
+    color: rgb(255, 255, 255);
+}
+
+body header .navbar .menu #register{
+    background-color: #D9D9D9;
+    color: #323030;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+body header .navbar .menu #register:hover{
+    background-color: #323030;
+    color: whitesmoke;
+}
+
+body header .navbar a:hover{
+    color: #195496;
+}
+
+body header .navbar .menu .register:hover{
+    background-color: #574f4f;
+    color: white;
+}
+
+.content{
+      background-image: url(/Assets/img/logistics.jpg);
+      background-size:cover;
+      min-height: 70vh;
+}
+
+body .word{
+    display: flex;
+    margin-top: 65px;
+    margin-left: 20px;
+    margin-right: 20px;
+    justify-content:space-evenly ;
+}
+
+body .word h3{
+    color: #618BA9;
+}
+
+body .word button{
+    background-color: #769FCD;
+    font-weight: bolder;
+    font-style: 'Poppins';
+    cursor: pointer;
+    border-radius: 20px;
+    padding: 10px;
+    color: #f7f7f7;
+}
+
+footer{
+    position:fixed;
+    left: 0;right:0;bottom: 0;
+    background-color: #769FCD;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items:last baseline;
+    justify-content: flex-end;
+}
+
+footer li{
+    list-style: none;
+    color: white;
+    font-size: small;
+    margin-right: 90px ;
+    font-weight: lighter;
+    margin-bottom: 2px;
+    padding-top: 8px;
+    margin-right: 80px;
+    margin-top: -5px;
+}
+
+footer li:hover{
+    color: #195496;
+}
+
+@media screen and (max-width: 730px) {
+    header{
+        flex-direction: column;
+        
+    }
+    
+    body header .navbar a{
+        margin-right: -5px;
+        padding-left: 3px;
+        padding-right: 10px;
+        font-size: 80%;
+        margin-top: -25px;
+        margin-right: 10px;
+        font-family: 'Poppins';
+        font-weight: bolder;
+        color: rgb(255, 255, 255);
+    }
+    
+    body header .navbar .logo img{
+        width: 3cm;
+        height: 2cm;
+        padding-top: 10px;
+        margin-left: -10px;
+    }
+
+    body header .navbar .menu .register{
+        background-color: #D9D9D9;
+        color: #323030;
+        padding-top: 2px;
+        padding-left: 5px;
+        padding-right: -5px;
+    }
+    li{
+        margin-right: -5px;
+        padding-left: 3px;
+        padding-right: 10px;
+        font-size: 80%;
+        margin-top: -25px;
+        margin-right: 10px;
+        font-family: 'Poppins';
+        font-weight: bolder;
+        color: rgb(255, 255, 255); 
+    }
+    footer{
+        padding: 15px;
+    }
+
+    footer li{
+        list-style: none;
+        color: white;
+        margin-top: -5px;
+        padding-top: 10px;
+        margin-right: 50px ;
+        font-weight: lighter;
+        font-size: small;
+        margin-bottom: -1px;
+    }
+
+    body .word{
+        margin-top: 20px;
+    }
+
+    .content{
+        background-image: url(/Assets/img/logistics.jpg);
+        background-size:cover;
+        min-height :border;
+    }
+} 
+
+@media screen and (min-width:1000px){
+    .content{
+        background-size: contain;
+    }
+
+    .content .word{
+        margin-top: 20px;
+    }
+}
+
+@media screen and (max-height: 500px) {
+    body header .navbar a{
+        margin-right: -5px;
+        padding-left: 3px;
+        padding-right: 10px;
+        font-size: 80%;
+        margin-top: -25px;
+        margin-right: 10px;
+        font-family: 'Poppins';
+        font-weight: bolder;
+        color: rgb(255, 255, 255);
+    }
+    
+    body header .navbar .logo img{
+        width: 3cm;
+        height: 2cm;
+        padding-top: 10px;
+        margin-left: -10px;
+    }
+
+    body header .navbar .menu .register{
+        background-color: #D9D9D9;
+        color: #323030;
+        padding-top: 2px;
+        padding-left: 5px;
+        padding-right: -5px;
+    }
+    
+    footer{
+        display: none;
+    }
+    .content{
+        scroll-behavior: smooth;
+        background-image: url(/Assets/img/logistics.jpg);
+        background-size:cover;
+        min-width: min-content;
+    }
+} 
