@@ -79,8 +79,96 @@ body header .navbar .menu .register:hover{
     background-color: #574f4f;
     color: white;
 }
+section{
+    align-self: center;
+    display: flex;
+    justify-content: center;
+}
 
+.features{
+    display:flex;
+    flex-direction: column;
+    height: 400px;
+    width: 700px;
+    background-color:#ffff ;
+    text-align: center;
+    align-items: center;
+    margin-top: 30px;
+    padding: 20px;
+}
 
+.pilihan{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top:40px;
+}
+
+.pilihan .storemanagement{
+    margin-right: 10px;
+    margin-left: 10px;
+    background-color: #B9D7EA;
+    padding: 20px;
+    width: 200px;
+    border-radius: 20px;
+}
+
+.storemanagement i{
+    font-size: 60px;
+    margin-bottom: 20px;
+}
+
+.storemanagement button{
+    background-color: #769FCD;
+    color: white;
+    padding: 6px;
+    border-radius: 10px;
+    width: 100px;
+}
+
+.pilihan .callcenter{
+    margin-right: 10px;
+    margin-left: 10px;
+    background-color: #B9D7EA;
+    padding: 20px;
+    width: 200px;
+    border-radius: 20px;
+}
+
+.callcenter i{
+    font-size: 60px;
+    margin-bottom: 20px;
+}
+
+.callcenter button{
+    background-color: #769FCD;
+    color: white;
+    padding: 6px;
+    border-radius: 10px;
+    width: 100px;
+}
+
+.pilihan .reporting{
+    margin-right: 10px;
+    margin-left: 10px;
+    background-color: #B9D7EA;
+    padding: 20px;
+    width: 200px;
+    border-radius: 20px;
+}
+
+.reporting i{
+    font-size: 60px;
+    margin-bottom: 20px;
+}
+
+.reporting button{
+    background-color: #769FCD;
+    color: white;
+    padding: 6px;
+    border-radius: 10px;
+    width: 100px;
+}
 footer{
     position:fixed;
     left: 0;right:0;bottom: 0;
@@ -112,7 +200,7 @@ footer li:hover{
     header{
         flex-direction: column;
     }
-   
+
     body header .navbar a{
         margin-right: -5px;
         padding-left: 3px;
