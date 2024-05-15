@@ -45,7 +45,7 @@ if (!isset($_SESSION['NIK'])) {
                 <select id="item_code" name="item_code[]" required>
     <?php
     // Menyiapkan query untuk mengambil daftar barang dari database
-    $sql_items = "SELECT id, item_name, stock FROM items";
+    $sql_items = "SELECT id, item_name, stock FROM items where stock > 0";
     $result_items = mysqli_query($conn, $sql_items);
 
     // Menampilkan pilihan barang dari hasil query
@@ -56,7 +56,20 @@ if (!isset($_SESSION['NIK'])) {
 </select><br>
                 
                 <label for="item_name">Item Name:</label><br>
-                <input type="text" class="item_name" name="item_name[]" required><br>
+                <!-- <input type="text" class="item_name" name="item_name[]" required><br> -->
+                 <select id="item_name" name="item_name[]" required>
+    <?php
+    // Menyiapkan query untuk mengambil daftar barang dari database
+    $sql_items = "SELECT id, item_name, stock FROM items where stock > 0";
+    $result_items = mysqli_query($conn, $sql_items);
+
+    // Menampilkan pilihan barang dari hasil query
+    while ($row = mysqli_fetch_assoc($result_items)) {
+        echo "<option value='" . $row['id'] . "'>" . $row['item_name'] .  "</option>";
+    }
+    ?>
+</select><br>
+            
                 
 
                 

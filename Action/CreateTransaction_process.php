@@ -7,7 +7,7 @@ include_once '../Auth/conn.php';
 
 // Memeriksa apakah formulir telah dikirim
 // Memeriksa apakah formulir telah dikirim
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {     
     // Memperoleh data dari formulir
     $receiver = $_POST['receiver'];
     $sender = $_POST['sender'];
