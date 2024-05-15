@@ -1,6 +1,12 @@
 <?php
+session_start();
 require '../../Auth/conn.php'; 
 include_once('tcpdf_6_3_2/tcpdf/tcpdf.php');
+
+if (!isset($_SESSION['NIK'])) {
+    header("location: ../../Auth/MainCheck");
+    exit;
+}
 
 $id = $_GET['id'];
 
