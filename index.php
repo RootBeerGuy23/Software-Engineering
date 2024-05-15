@@ -17,10 +17,8 @@ if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     $username = $row['username'];
     // Tampilkan nama pengguna
-    echo "Halo, $username!";
-} else {
-    echo "Nama pengguna tidak ditemukan.";
-}
+    // echo "Halo, $username!";
+}   
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +28,8 @@ if ($result->num_rows > 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Store Spehere INC</title>
     <link rel="icon" href="Assets/img/logo.png">
-    <link rel="stylesheet" href="Assets/css/index.css">
+    <link rel="stylesheet" href="Assets/css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 </head>
 <body>
@@ -43,17 +42,17 @@ if ($result->num_rows > 0) {
             </div>
             
             <div class="menu">
-                <a href="index.html" >Home</a>
+                <a href="index.html" id="biruin" >Dashboard</a>
                 <a href="#contact">Contact</a>
                 <a href="#services">Services</a>
-                <a href="#about">About</a>
+                <a href="#about">About</a>  
+                <li id="gabisadiclick"><i class="fa-solid fa-user"></i> <?php echo 'Hai, ' . $username?><a href="Auth/Logout" id="logoutLink"><i class="fa-solid fa-right-from-bracket"></i><br></a><?php echo date('l,d-m-Y') ?></li>
+                
             </div>
         </nav>
     </header>
     <div class="word">
-        <?php echo 'Hai,' . $username; ?>
-        <a href="Auth/Logout" id="logoutLink">Logout</a>
-        <h3>"Optimalkan Operasi Gudang dengan Web Storage Management: <br> Solusi Efisien unutk Logistik Modern!"</h3>
+        <h3>"Optimalkan Operasi Gudang dengan W>eb Storage Management: <br> Solusi Efisien unutk Logistik Modern!"</h3>
         <button type="submit">Explore Now !!!</button>
         <!-- <img src="Assets/img/logistics.jpg" alt=""> -->
     </div>
