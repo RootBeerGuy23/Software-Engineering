@@ -1,5 +1,12 @@
 <?php
+session_start();
+if (!isset($_SESSION['NIK'])) {
+    header("location: ../Auth/MainCheck");
+    exit;
+}
 require '../Auth/conn.php';
+
+
 
 // Ambil semua data barang dari gudang tertentu
 if(isset($_GET['warehouse'])) {
@@ -97,15 +104,30 @@ $(document).ready(function() {
             type: 'POST',
             data: {id: id, action: action, quantity: quantity, warehouse: warehouse},
             success: function(response) {
-                $('#stock_' + id).text(response);
-                // Mengosongkan nilai input setelah berhasil memperbarui stok
-                quantityInput.val('');
+                // Cek apakah respons merupakan pesan kesalahan
+                if (response.startsWith('You are not authorized')) {
+                    // Jika ya, tampilkan pesan kesalahan
+                    $('body').append("<p style='color:red'>" + response + "</p>");
+                } else {
+                    // Jika tidak, lakukan pembaruan stok seperti biasa
+                    $('#stock_' + id).text(response);
+                    // Mengosongkan nilai input setelah berhasil memperbarui stok
+                    quantityInput.val('');
+                }
+            },
+            error: function(xhr, status, error) {
+                // Tangani kesalahan AJAX di sini
+                console.error(xhr.responseText);
+                // Tampilkan pesan kesalahan
+                $('body').append("<p style='color:red'>You Have No Permission.</p>");
             }
         });
     });
 });
 
 </script>
+
+
 
 
 
