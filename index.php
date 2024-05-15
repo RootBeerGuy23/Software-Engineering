@@ -53,10 +53,54 @@ if ($result->num_rows > 0) {
         </nav>
     </header>
     <section>
-        <div class="warehouse">
-            <h2>List Warehouse</h2>
-            <div></div>
-        </div>
+        <div class="rapi">
+        <h2>List Warehouse </h2>
+        <div class="warehouses">
+        <?php 
+            // Periksa koneksi
+            if ($conn->connect_error) {
+                die("Koneksi gagal: " . $conn->connect_error);
+            }
+
+            // Array untuk menyimpan nama tabel gudang
+            $warehouses = array("CHINA", "JAKARTA", "BATAM", "BOGOR");
+
+            // Array untuk menyimpan div yang akan dihasilkan
+            $divs = array();
+
+            // Loop untuk menampilkan data dari setiap tabel gudang
+            foreach ($warehouses as $warehouse) {
+                // Gunakan nama gudang sebagai bagian dari class div
+                $class_name = strtolower($warehouse);
+                $content = "<div class='warehouse $class_name'>";
+                $content .= "<h2>Warehouse $warehouse</h2>";
+                $sql = "SELECT id_barang, nama_barang, jumlah_stok, last_audit, last_update, description, image_path FROM warehouse_$warehouse";
+                $result = $conn->query($sql);
+
+                if ($result->num_rows > 0) {
+                    $content .= "<table>";
+                    $content .= "<tr><th>ID Barang</th><th>Nama Barang</th><th>Jumlah Stok</th><th>Last Audit</th><th>Last Update</th><th>Description</th><th>Image</th></tr>";
+                    while($row = $result->fetch_assoc()) {
+                        $content .= "<tr><td>".$row["id_barang"]."</td><td>".$row["nama_barang"]."</td><td>".$row["jumlah_stok"]."</td><td>".$row["last_audit"]."</td><td>".$row["last_update"]."</td><td>".$row["description"]."</td><td><img src=\"".$row["image_path"]."\" alt=\"Image\"></td></tr>";
+                    }
+                    $content .= "</table>";
+                } else {
+                    $content .= "Tidak ada data di Warehouse $warehouse";
+                }
+                $content .= "</div><br>";
+                $divs[] = $content; // Tambahkan konten div ke array
+            }
+
+            $conn->close();
+
+            // Tampilkan semua div
+            foreach ($divs as $div) {
+                echo $div;
+            }
+            ?>
+
+        </div> 
+     </div>
     </section>
     <footer>
         <li>Terms & Conditions</li>
