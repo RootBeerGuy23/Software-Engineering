@@ -1,6 +1,10 @@
 <?php
+session_start();
 require '../Auth/conn.php';
-
+if (!isset($_SESSION['NIK'])) {
+    header("location: ../Auth/MainCheck");
+    exit;
+}
 // Ambil semua data barang dari gudang tertentu
 if(isset($_GET['warehouse'])) {
     $warehouse = $_GET['warehouse'];

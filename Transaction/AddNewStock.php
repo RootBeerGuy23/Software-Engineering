@@ -1,5 +1,10 @@
 <?php
+session_start();
 include_once '../Auth/conn.php';
+if (!isset($_SESSION['NIK'])) {
+    header("location: ../Auth/MainCheck");
+    exit;
+}
 // Ambil daftar nama gudang dari database
 $sql = "SELECT table_name FROM information_schema.tables WHERE table_name LIKE 'warehouse_%'";
 $result = $conn->query($sql);
@@ -14,7 +19,17 @@ if ($result->num_rows > 0) {
         $warehouses[] = ucfirst(strtolower($warehouse_name));
     }
 }
+
+
+if (isset($_SESSION['No_Permission'])) {
+    echo "<p style='color:red'>" . $_SESSION['No_Permission'] . "</p>";
+    unset($_SESSION['No_Permission']);
+    }
+
+    
 ?>
+
+
 <!DOCTYPE html>
 <html>
 <head>

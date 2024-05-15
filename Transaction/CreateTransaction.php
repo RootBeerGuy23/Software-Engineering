@@ -7,6 +7,12 @@ if (!isset($_SESSION['NIK'])) {
     header("location: ../Auth/MainCheck");
     exit;
 }
+
+if (isset($_SESSION['No_Permission'])) {
+    echo "<p style='color:red'>" . $_SESSION['No_Permission'] . "</p>";
+    unset($_SESSION['No_Permission']);
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
