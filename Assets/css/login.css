@@ -149,7 +149,7 @@ footer .kosong{
 }
 .captcha-refresh {
     cursor: pointer;
-    margin-left: 20px;
+    margin-left: 40px;
     color: blue;
     text-decoration: underline;
     user-select: none; /* Prevent text selection */

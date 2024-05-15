@@ -29,9 +29,8 @@ session_start();
         </div>
     </nav>
     </header>
-
+    <section>
     <div class="container">
-    <h2>Registrarion</h2>
     <?php 
      if(isset($_SESSION['error_message'])) {
         echo "<p style='color:red'>" . $_SESSION['error_message'] . "</p>";
@@ -45,11 +44,12 @@ session_start();
     }
     ?>
     <form action="../Action/register_process.php" method="post" id="registrationForm">
-
+    <br><h2>Registration</h2>
+    <br>
         <input type="text" id="username" placeholder="Username" name="username" readonly autocapitalize="off"><br>
         <input type="email" id="email" placeholder="Email" name="email" autocapitalize="off"><br>
         <input type="date" id="dob" placeholder="DOB" name="dob"><br>
-        <input type="text" id="nik" name="nik" oninput="validateNIK(this);" maxlength="5" disabled placeholder="This Is AutoGenerate Function" autocapitalize="off"><br>
+        <input type="text" id="nik" name="nik" oninput="validateNIK(this);" maxlength="5" disabled placeholder="ID (auto generated)" autocapitalize="off"><br>
         <select name="department" placeholder="Department" id="department">
             <option value="HR">HR</option>
             <option value="IT">IT</option>
@@ -57,21 +57,22 @@ session_start();
             <option value="Marketing">Marketing</option>
         </select><br>
             <input type="password" placeholder="Password" id="password" name="password" autocapitalize="off"><br>
-            <input type="password" placeholder="Retype Password"id="passwordRetype" name="passwordRetype" autocapitalize="off"><br>
-            <input type="checkbox" onclick="togglePasswordVisibility()"> Show Password <br><br>
-       
-
+            <input type="password" placeholder="Retype Password"id="passwordRetype" name="passwordRetype" autocapitalize="off">
+            <div class="wrapper">
+            <input type="checkbox" onclick="togglePasswordVisibility()" id="check">
+            <label for="check">Show Password</label><br/>
+            </div>
+           <br>
         <div class="captcha-box">
             <span id="captchaText"></span>
             <span class="captcha-refresh" onclick="generateCaptcha()"><button type="button">refresh</button></span>
         </div><br>
         <input type="text" id="captcha" name="captcha" placeholder="Enter the text above" autocapitalize="off"><br>
-        <input type="hidden" id="hiddenCaptcha"><br><br>
-        
+        <input type="hidden" id="hiddenCaptcha"><br>
         <button type="submit">Registration</button>
     </form>
     </div>
-
+</section>
     <script>
         function ValidatePassword() {
             var password = document.getElementById("password").value;
