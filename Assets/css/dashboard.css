@@ -93,32 +93,14 @@ body header .navbar .menu .register:hover{
     color: white;
 }
 
-.content{
-      background-image: url(/Assets/img/logistics.jpg);
-      background-size:cover;
-      min-height: 70vh;
-}
-
-body .word{
+section{
+    align-self: center;
     display: flex;
-    margin-top: 65px;
-    margin-left: 20px;
-    margin-right: 20px;
-    justify-content:space-evenly ;
+    justify-content: center;
 }
 
-body .word h3{
-    color: #618BA9;
-}
-
-body .word button{
-    background-color: #769FCD;
-    font-weight: bolder;
-    font-style: 'Poppins';
-    cursor: pointer;
-    border-radius: 20px;
-    padding: 10px;
-    color: #f7f7f7;
+.warehouse {
+    margin: 20px;
 }
 
 footer{
@@ -208,12 +190,6 @@ footer li:hover{
 
     body .word{
         margin-top: 20px;
-    }
-
-    .content{
-        background-image: url(/Assets/img/logistics.jpg);
-        background-size:cover;
-        min-height :border;
     }
 } 
 

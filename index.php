@@ -53,8 +53,8 @@ if ($result->num_rows > 0) {
         </nav>
     </header>
     <section>
-        <h2>List WareHouse</h2>
-        <div class="">
+        <div class="warehouse">
+            <h2>List Warehouse</h2>
             <div></div>
         </div>
     </section>
