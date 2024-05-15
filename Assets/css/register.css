@@ -80,7 +80,7 @@ form .Login #judul{
     color: #000000;
 }
 
-form input{
+form input, select, checkbox{
     background-color: #B9D7EA;
     width: 300px;
     margin: 5px;
@@ -90,8 +90,11 @@ form input{
     color: #79A5C5;
 }
 
+
+
+
 ::placeholder{
-    color: #79A5C5;
+    color: #ffffff;
 }
 
 form button{
@@ -234,3 +237,21 @@ footer .kosong{
         min-width: min-content;
     }
 } 
+.captcha-box {
+    display: inline-block;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    font-weight: bold;
+    font-size: 18px;
+    user-select: none; /* Prevent text selection */
+    cursor: default;    /* Change cursor to default */
+}
+.captcha-refresh {
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+    margin-left: 10px;
+    user-select: none; /* Prevent text selection */
+}

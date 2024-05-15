@@ -1,68 +1,77 @@
 <?php 
 session_start();
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Login</title>
-    <style>
-        .captcha-box {
-            display: inline-block;
-            padding: 10px;
-            border: 2px solid #ccc;
-            border-radius: 5px;
-            background-color: #f9f9f9;
-            font-weight: bold;
-            font-size: 18px;
-            user-select: none; /* Prevent text selection */
-            cursor: default;    /* Change cursor to default */
-        }
-        .captcha-refresh {
-            cursor: pointer;
-            color: blue;
-            text-decoration: underline;
-            margin-left: 10px;
-            user-select: none; /* Prevent text selection */
-        }
-    </style>
-    <script src="captcha.js"></script> <!-- Update the path to your captcha.js file -->
-</head>
+<DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Store Spehere INC</title>
+        <link rel="icon" href="Assets/img/logo.png">
+        <link rel="stylesheet" href="../Assets/css/login.css">
+        <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+        <script src="captcha.js"></script>
+    </head>
 <body>
-    <h2>Login</h2>
-
-    <?php 
-        if (isset($_SESSION['error_message'])) {
+    <header>
+    <nav class="navbar">
+        <div class="logo">
+        <a href="index.php">
+            <img src="../Assets/img/logo.png" alt="Link Logo">
+        </a>
+        </div>
+        <div class="menu">
+            <a href="index.html" >Home</a>
+            <a href="#contact">Contact</a>
+            <a href="services.html">Services</a>
+        </div>
+    </nav>
+    </header>
+        <div class="container">
+            <br><br><br>
+            <form action="../Action/login_process.php" method="post" onsubmit="return validateCaptcha()">
+                <div class="Login">
+                    <h1 id="judul">Login</h1>
+                    <br>
+                    <?php 
+             if (isset($_SESSION['error_message'])) {
             echo "<p style='color:red'>" . $_SESSION['error_message'] . "</p>";
             unset($_SESSION['error_message']);
-        }
+            }
 
-        if (isset($_SESSION['success_message'])) {
+             if (isset($_SESSION['success_message'])) {
             echo "<p style='color:green'>" . $_SESSION['success_message'] . "</p>";
             unset($_SESSION['success_message']);
-        }
+            }
     ?>
 
-    <form action="../Action/login_process.php" method="post" onsubmit="return validateCaptcha()">
-        <label for="Email">Email</label><br>
-        <input type="email" id="Email" name="Email" value="<?php echo isset($_SESSION['registered_username']) ? $_SESSION['registered_username'] : ''; ?>"><br>
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password"><br><br>
+   
+            <label for="Email">Email</label><br>
+            <input type="email" id="Email" name="Email" value="<?php echo isset($_SESSION['registered_username']) ? $_SESSION['registered_username'] : ''; ?>"><br>
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password"><br><br>
 
-        <label for="captcha">Captcha:</label><br>
-        <div class="captcha-box">
+            <label for="captcha">Captcha:</label><br>
+            <div class="captcha-box">
             <span id="captchaText"></span>
             <span class="captcha-refresh" onclick="generateCaptcha()"><button type="button">refresh</button></span>
-        </div><br>
-        <input type="text" id="captcha" name="captcha" placeholder="Enter the text above"><br>
-        <input type="hidden" id="hiddenCaptcha"><br><br>
+            </div><br>
+            <input type="text" id="captcha" name="captcha" placeholder="Enter the text above"><br>
+            <input type="hidden" id="hiddenCaptcha"><br><br>
+             <button type="submit" >Login</button>
 
-        <input type="submit" value="Login">
+            <h4>Don't have account? <a href="register.html">register </a>now</h4>
+            </form>
+                </div>
+              
         
-        <p>Belum punya akun? <a href="Register">Registrasi di sini</a></p>
-    </form>
+        </div>
+
+    <footer>
+          <div class="kosong"></div>
+    </footer>
 </body>
 </html>
-
 <?php 
 unset($_SESSION['registered_username']);
 ?>

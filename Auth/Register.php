@@ -5,30 +5,32 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Registrasi Pengguna</title>
-    <style>
-        .captcha-box {
-            display: inline-block;
-            padding: 10px;
-            border: 2px solid #ccc;
-            border-radius: 5px;
-            background-color: #f9f9f9;
-            font-weight: bold;
-            font-size: 18px;
-            user-select: none; /* Prevent text selection */
-            cursor: default;    /* Change cursor to default */
-        }
-        .captcha-refresh {
-            cursor: pointer;
-            color: blue;
-            text-decoration: underline;
-            margin-left: 10px;
-            user-select: none; /* Prevent text selection */
-        }
-    </style>
-    <script src="captcha.js"></script> <!-- Update the path to your captcha.js file -->
-</head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Store Spehere INC</title>
+        <link rel="icon" href="Assets/img/logo.png">
+        <link rel="stylesheet" href="../Assets/css/register.css">
+        <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+        <script src="captcha.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
 <body>
+<header>
+    <nav class="navbar">
+        <div class="logo">
+        <a href="index.php">
+            <img src="Assets/img/logo.png" alt="Link Logo">
+        </a>
+        </div>
+        <div class="menu">
+            <a href="index.html" >Home</a>
+            <a href="#contact">Contact</a>
+            <a href="services.html">Services</a>
+        </div>
+    </nav>
+    </header>
+
+    <div class="container">
     <h2>Registrasi Pengguna</h2>
     <?php 
      if(isset($_SESSION['error_message'])) {
@@ -64,7 +66,7 @@ session_start();
             <option value="Marketing">Marketing</option>
         </select><br>
 
-        <div>
+        
             <label for="password">Password:</label><br>
             <input type="password" id="password" name="password"><br><br>
         
@@ -72,7 +74,7 @@ session_start();
             <input type="password" id="passwordRetype" name="passwordRetype"><br><br>
         
             <input type="checkbox" onclick="togglePasswordVisibility()"> Show Password <br><br>
-        </div>
+       
 
         <div class="captcha-box">
             <span id="captchaText"></span>
@@ -83,6 +85,7 @@ session_start();
         
         <input type="submit" value="Registrasi">
     </form>
+    </div>
 
     <script>
         function ValidatePassword() {

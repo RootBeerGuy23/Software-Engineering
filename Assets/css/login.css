@@ -97,13 +97,18 @@ form input{
 form button{
     padding: 7px 50px;
     margin: 20px;
-    margin-top: 30px;
+    margin-top:30px;
     border-radius: 20px;
     background-color: #8fc2e6 ;
     color: whitesmoke;
     cursor: pointer;
     font-size: large;
 }
+
+
+
+
+
 
 button:hover{
     background-color: #769FCD;
@@ -112,6 +117,7 @@ button:hover{
 form h4{
     font-size: smaller;
     margin-top: 10px;
+    margin-bottom: 20px;
     font-weight:600;
 }
 
@@ -131,6 +137,24 @@ footer .kosong{
     justify-content: flex-end;
 }
 
+.captcha-box {
+    display: inline-block; */
+    padding: 3px;
+    border: 2px solid #B9D7EA;
+    border-radius: 5px;
+    background-color: #B9D7EA; 
+    font-weight: bold;
+    font-size: 18px;
+    user-select: none; /* Prevent text selection */
+    cursor: default;    /* Change cursor to default */
+}
+.captcha-refresh {
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+    margin-left: 10px;
+    user-select: none; /* Prevent text selection */
+}
 
 @media screen and (max-width: 730px) {
     body header .navbar a{
