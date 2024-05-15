@@ -42,7 +42,7 @@ if ($result->num_rows > 0) {
             </div>
             
             <div class="menu">
-                <a href="index.html" id="biruin" >Dashboard</a>
+                <a href="index.php" id="biruin" >Dashboard</a>
                 <a href="#contact">Contact</a>
                 <a href="#services">Services</a>
                 <a href="#about">About</a>  
@@ -51,14 +51,12 @@ if ($result->num_rows > 0) {
             </div>
         </nav>
     </header>
-    <div class="word">
-        <h3>"Optimalkan Operasi Gudang dengan W>eb Storage Management: <br> Solusi Efisien unutk Logistik Modern!"</h3>
-        <button type="submit">Explore Now !!!</button>
-        <!-- <img src="Assets/img/logistics.jpg" alt=""> -->
-    </div>
-<div>
-    <img src="Assets/img/logistics.jpg" alt="">
-</div>
+    <section>
+        <h2>List WareHouse</h2>
+        <div class="">
+            <div></div>
+        </div>
+    </section>
     <footer>
         <li>Terms & Conditions</li>
         <li>Accessibility</li>
