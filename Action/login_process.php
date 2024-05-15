@@ -2,6 +2,7 @@
 include_once '../Auth/conn.php';
 session_start();
 
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = htmlspecialchars($_POST['Email']);
     $password = htmlspecialchars($_POST['password']);

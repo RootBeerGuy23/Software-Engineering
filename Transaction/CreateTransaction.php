@@ -1,3 +1,13 @@
+<?php
+session_start();
+include_once '../Auth/conn.php';
+
+// Memeriksa apakah pengguna sudah login
+if (!isset($_SESSION['NIK'])) {
+    header("location: ../Auth/MainCheck");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,10 +41,37 @@
             <!-- Initial item fields -->
             <div class="itemFields">
                 <label for="item_code">Item Code:</label><br>
-                <input type="text" class="item_code" name="item_code[]" required><br>
+                <!-- <input type="text" class="item_code" name="item_code[]" required><br> -->
+                <select id="item_code" name="item_code[]" required>
+    <?php
+    // Menyiapkan query untuk mengambil daftar barang dari database
+    $sql_items = "SELECT id, item_name, stock FROM items where stock > 0";
+    $result_items = mysqli_query($conn, $sql_items);
+
+    // Menampilkan pilihan barang dari hasil query
+    while ($row = mysqli_fetch_assoc($result_items)) {
+        echo "<option value='" . $row['id'] . "'>" . $row['item_name'] . " (Stock: " . $row['stock'] . ")</option>";
+    }
+    ?>
+</select><br>
                 
                 <label for="item_name">Item Name:</label><br>
-                <input type="text" class="item_name" name="item_name[]" required><br>
+                <!-- <input type="text" class="item_name" name="item_name[]" required><br> -->
+                 <select id="item_name" name="item_name[]" required>
+    <?php
+    // Menyiapkan query untuk mengambil daftar barang dari database
+    $sql_items = "SELECT id, item_name, stock FROM items where stock > 0";
+    $result_items = mysqli_query($conn, $sql_items);
+
+    // Menampilkan pilihan barang dari hasil query
+    while ($row = mysqli_fetch_assoc($result_items)) {
+        echo "<option value='" . $row['id'] . "'>" . $row['item_name'] .  "</option>";
+    }
+    ?>
+</select><br>
+            
+                
+
                 
                 <label for="total_pcs">Total PCS:</label><br>
                 <input type="number" class="total_pcs" name="total_pcs[]" required><br>
