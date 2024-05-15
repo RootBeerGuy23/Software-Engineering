@@ -10,7 +10,7 @@ session_start();
         <link rel="icon" href="Assets/img/logo.png">
         <link rel="stylesheet" href="../Assets/css/login.css">
         <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-        <script src="captcha.js"></script>
+        <script src="../Assets/js/captcha.js"></script>
     </head>
 <body>
     <header>

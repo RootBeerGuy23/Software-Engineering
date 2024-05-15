@@ -11,7 +11,7 @@ session_start();
         <link rel="icon" href="Assets/img/logo.png">
         <link rel="stylesheet" href="../Assets/css/register.css">
         <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-        <script src="captcha.js"></script>
+        <script src="../Assets/js/captcha.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
 <body>
@@ -47,16 +47,16 @@ session_start();
     <form action="../Action/register_process.php" method="post" id="registrationForm">
 
         <label for="username">Username:</label><br>
-        <input type="text" id="username" name="username" readonly><br>
+        <input type="text" id="username" name="username" readonly autocapitalize="off"><br>
 
         <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email"><br>
+        <input type="email" id="email" name="email" autocapitalize="off"><br>
 
         <label for="dob">Date Of Birth:</label><br>
         <input type="date" id="dob" name="dob"><br>
 
         <label for="nik">NIK:</label><br>
-        <input type="text" id="nik" name="nik" oninput="validateNIK(this);" maxlength="5" disabled placeholder="This Is AutoGenerate Function"><br>
+        <input type="text" id="nik" name="nik" oninput="validateNIK(this);" maxlength="5" disabled placeholder="This Is AutoGenerate Function" autocapitalize="off"><br>
 
         <label for="department">Department:</label><br>
         <select name="department" id="department">
@@ -68,10 +68,10 @@ session_start();
 
         
             <label for="password">Password:</label><br>
-            <input type="password" id="password" name="password"><br><br>
+            <input type="password" id="password" name="password" autocapitalize="off"><br><br>
         
             <label for="passwordRetype">Retype Password:</label><br>
-            <input type="password" id="passwordRetype" name="passwordRetype"><br><br>
+            <input type="password" id="passwordRetype" name="passwordRetype" autocapitalize="off"><br><br>
         
             <input type="checkbox" onclick="togglePasswordVisibility()"> Show Password <br><br>
        
@@ -80,7 +80,7 @@ session_start();
             <span id="captchaText"></span>
             <span class="captcha-refresh" onclick="generateCaptcha()"><button type="button">refresh</button></span>
         </div><br><br>
-        <input type="text" id="captcha" name="captcha" placeholder="Enter the text above"><br>
+        <input type="text" id="captcha" name="captcha" placeholder="Enter the text above" autocapitalize="off"><br>
         <input type="hidden" id="hiddenCaptcha"><br><br>
         
         <input type="submit" value="Registrasi">

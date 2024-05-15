@@ -81,6 +81,7 @@ form .Login #judul{
 }
 
 form input{
+    text-transform: none;
     background-color: #B9D7EA;
     width: 300px;
     margin: 5px;
@@ -138,7 +139,7 @@ footer .kosong{
 }
 
 .captcha-box {
-    display: inline-block; */
+    display: inline-block;
     padding: 3px;
     border: 2px solid #B9D7EA;
     border-radius: 5px;

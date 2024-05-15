@@ -7,11 +7,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $item_name = $_POST['item_name'];
     $description = $_POST['description'];
     $stock = intval($_POST['stock']);
-    $image_path = '../Assets/img/';
+    $image_path = '../Assets/img/items/';
 
     // Proses upload gambar
     if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
-        $target_dir = "../Assets/img/";
+        $target_dir = "../Assets/img/items/";
         $target_file = $target_dir . basename($_FILES["image"]["name"]);
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 

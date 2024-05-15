@@ -81,6 +81,7 @@ form .Login #judul{
 }
 
 form input, select, checkbox{
+    text-transform: none;
     background-color: #B9D7EA;
     width: 300px;
     margin: 5px;
