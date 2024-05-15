@@ -1,47 +1,20 @@
 <?php
 require '../Auth/conn.php';
 
-// Proses update stok
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $id = $_POST['id'];
-    $action = $_POST['action'];
-    $quantity = intval($_POST['quantity']);
-
-    // Ambil stok saat ini
-    $query = "SELECT stock FROM items WHERE id = ?";
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param("i", $id);
-    $stmt->execute();
-    $stmt->bind_result($current_stock);
-    $stmt->fetch();
-    $stmt->close();
-
-    if ($action == 'add') {
-        $new_stock = $current_stock + $quantity;
-    } else if ($action == 'subtract') {
-        $new_stock = $current_stock - $quantity;
-        if ($new_stock < 0) {
-            $new_stock = 0;
-        }
-    }
-
-    // Update stok
-    $query = "UPDATE items SET stock = ? WHERE id = ?";
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param("ii", $new_stock, $id);
-    $stmt->execute();
-    $stmt->close();
+// Ambil semua data barang dari gudang tertentu
+if(isset($_GET['warehouse'])) {
+    $warehouse = $_GET['warehouse'];
+    $query = "SELECT id_barang, nama_barang, jumlah_stok FROM warehouse_$warehouse";
+    $result = $conn->query($query);
 }
-
-// Ambil semua data barang
-$query = "SELECT id, item_name, description, stock FROM items";
-$result = $conn->query($query);
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
     <title>Update Stock</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <style>
         table {
             width: 100%;
@@ -63,30 +36,76 @@ $result = $conn->query($query);
 </head>
 <body>
     <h1>Update Stock</h1>
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Item Name</th>
-            <th>Description</th>
-            <th>Stock</th>
-            <th>Actions</th>
-        </tr>
-        <?php while ($row = $result->fetch_assoc()) { ?>
-        <tr>
-            <td><?php echo $row['id']; ?></td>
-            <td><?php echo $row['item_name']; ?></td>
-            <td><?php echo $row['description']; ?></td>
-            <td><?php echo $row['stock']; ?></td>
-            <td>
-                <form method="post" action="StockUpdate.php">
-                    <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
-                    <input type="number" name="quantity" min="1" required>
-                    <button type="submit" name="action" value="add">Add</button>
-                    <button type="submit" name="action" value="subtract">Subtract</button>
-                </form>
-            </td>
-        </tr>
-        <?php } ?>
-    </table>
+    <form method="get" action="">
+    <label>Choose Warehouse:</label><br>
+    <?php
+    // Ambil daftar nama gudang dari database
+    $sql = "SELECT table_name FROM information_schema.tables WHERE table_name LIKE 'warehouse_%'";
+    $result_warehouse = $conn->query($sql);
+
+    if ($result_warehouse->num_rows > 0) {
+        while($row_warehouse = $result_warehouse->fetch_assoc()) {
+            // Ambil nama gudang dari nama tabel dan tampilkan sebagai opsi
+            $warehouse_name = str_replace("warehouse_", "", $row_warehouse['table_name']);
+            $checked = (isset($_GET['warehouse']) && $_GET['warehouse'] == strtolower($warehouse_name)) ? 'checked' : '';
+            echo "<label><input type=\"radio\" name=\"warehouse\" value=\"" . strtolower($warehouse_name) . "\" $checked>" . ucfirst($warehouse_name) . "</label><br>";
+        }
+    }
+    ?>
+    <button type="submit">Submit</button>
+</form>
+
+    <?php if(isset($result)) { ?>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Item Name</th>
+                <th>Stock</th>
+                <th>Actions</th>
+            </tr>
+            <?php while ($row = $result->fetch_assoc()) { ?>
+    <tr>
+        <td><?php echo $row['id_barang']; ?></td>
+        <td><?php echo $row['nama_barang']; ?></td>
+        <td id="stock_<?php echo $row['id_barang']; ?>"><?php echo $row['jumlah_stok']; ?></td>
+        <td>
+            <input type="hidden" name="warehouse" value="<?php echo $_GET['warehouse']; ?>">
+            <input type="number" name="quantity" id="quantity_<?php echo $row['id_barang']; ?>" min="1" required>
+            <button type="button" class="update-btn" data-id="<?php echo $row['id_barang']; ?>" data-action="add">Add</button>
+            <button type="button" class="update-btn" data-id="<?php echo $row['id_barang']; ?>" data-action="subtract">Subtract</button>
+        </td>
+    </tr>
+<?php } ?>
+
+        </table>
+    <?php } ?>
 </body>
 </html>
+
+
+<script>
+$(document).ready(function() {
+    $('.update-btn').click(function() {
+        var id = $(this).data('id');
+        var action = $(this).data('action');
+        var quantityInput = $('#quantity_' + id);
+        var quantity = quantityInput.val();
+        var warehouse = '<?php echo $_GET['warehouse']; ?>';
+        
+        $.ajax({
+            url: '../Action/StockUpdate_process.php',
+            type: 'POST',
+            data: {id: id, action: action, quantity: quantity, warehouse: warehouse},
+            success: function(response) {
+                $('#stock_' + id).text(response);
+                // Mengosongkan nilai input setelah berhasil memperbarui stok
+                quantityInput.val('');
+            }
+        });
+    });
+});
+
+</script>
+
+
+
