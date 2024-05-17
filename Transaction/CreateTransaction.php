@@ -66,12 +66,12 @@ if (isset($_SESSION['No_Permission'])) {
                  <select id="item_name" name="item_name[]" required>
     <?php
     // Menyiapkan query untuk mengambil daftar barang dari database
-    $sql_items = "SELECT id, item_name, stock FROM items where stock > 0";
-    $result_items = mysqli_query($conn, $sql_items);
+    $sql_name = "SELECT item_name FROM items where stock > 0";
+    $result_name = mysqli_query($conn, $sql_name);
 
     // Menampilkan pilihan barang dari hasil query
-    while ($row = mysqli_fetch_assoc($result_items)) {
-        echo "<option value='" . $row['id'] . "'>" . $row['item_name'] .  "</option>";
+    while ($rows = mysqli_fetch_assoc($result_name)) {
+        echo "<option value='" . $rows['item_name'] . "'>" . $rows['item_name'] .  "</option>";
     }
     ?>
 </select><br>
@@ -97,29 +97,55 @@ if (isset($_SESSION['No_Permission'])) {
     </form>
 
     <script>
-        function addItem() {
-            var container = document.getElementById("itemFieldsContainer");
-            var newItemField = document.createElement("div");
-            newItemField.className = "itemFields";
+    function addItem() {
+        var container = document.getElementById("itemFieldsContainer");
+        var newItemField = document.createElement("div");
+        newItemField.className = "itemFields";
 
-            newItemField.innerHTML = `
-                <label for="item_code">Item Code:</label><br>
-                <input type="text" class="item_code" name="item_code[]" required><br>
+        newItemField.innerHTML = `
+            <label for="item_code">Item Code:</label><br>
+            <label for="item_code">Item Code:</label><br>
+                <!-- <input type="text" class="item_code" name="item_code[]" required><br> -->
+                <select id="item_code" name="item_code[]" required>
+    <?php
+    // Menyiapkan query untuk mengambil daftar barang dari database
+    $sql_items = "SELECT id, item_name, stock FROM items where stock > 0";
+    $result_items = mysqli_query($conn, $sql_items);
+
+    // Menampilkan pilihan barang dari hasil query
+    while ($row = mysqli_fetch_assoc($result_items)) {
+        echo "<option value='" . $row['id'] . "'>" . $row['item_name'] . " (Stock: " . $row['stock'] . ")</option>";
+    }
+    ?>
+</select><br>
                 
                 <label for="item_name">Item Name:</label><br>
-                <input type="text" class="item_name" name="item_name[]" required><br>
-                
-                <label for="total_pcs">Total PCS:</label><br>
-                <input type="number" class="total_pcs" name="total_pcs[]" required><br>
-                
-                <label for="description">Description:</label><br>
-                <textarea class="description" name="description[]"></textarea><br>
-                
-                <label for="Harga">Harga:</label><br>
-                <input type="text" class="Harga" name="Harga[]" required step="any"></><br>
-            `;
-            container.appendChild(newItemField);
-        }
-    </script>
+                <!-- <input type="text" class="item_name" name="item_name[]" required><br> -->
+                 <select id="item_name" name="item_name[]" required>
+    <?php
+    // Menyiapkan query untuk mengambil daftar barang dari database
+    $sql_name = "SELECT item_name FROM items where stock > 0";
+    $result_name = mysqli_query($conn, $sql_name);
+
+    // Menampilkan pilihan barang dari hasil query
+    while ($rows = mysqli_fetch_assoc($result_name)) {
+        echo "<option value='" . $rows['item_name'] . "'>" . $rows['item_name'] .  "</option>";
+    }
+    ?>
+</select><br>
+
+            <label for="total_pcs">Total PCS:</label><br>
+            <input type="number" class="total_pcs" name="total_pcs[]" required><br>
+
+            <label for="description">Description:</label><br>
+            <textarea class="description" name="description[]"></textarea><br>
+            
+            <label for="Harga">Harga:</label><br>
+            <input type="text" class="Harga" name="Harga[]" required step="any"><br>
+        `;
+        container.appendChild(newItemField);
+    }
+</script>
+
 </body>
 </html>

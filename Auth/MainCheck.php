@@ -31,8 +31,8 @@ if(isset($_SESSION['NIK'])){
         <img src="../Assets/img/logo.png" alt="">
         <h3>Please Login or Register to proceed :</h3>
         <div class="rapi">
-            <a href="Login.php"> <button >Login</button> </a> <span>or</span>
-            <a href="Register.php"><button>Register</button></a>
+            <a href="Login"> <button >Login</button> </a> <span>or</span>
+            <a href="Register"><button>Register</button></a>
         </div>
     </section>
     <footer>

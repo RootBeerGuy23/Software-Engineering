@@ -53,7 +53,8 @@ if (mysqli_query($conn, $sql_transaction)) {
         $total_pcs = $_POST['total_pcs'][$key];
         $description = $_POST['description'][$key];
         $price = $_POST['Harga'][$key];
-
+       
+        
         // Menyiapkan query untuk memasukkan detail barang ke dalam database
         $sql_items = "INSERT INTO transaction_items (transaction_id, item_code, item_name, total_pcs, description, waybill_number, price) 
                       VALUES ('$transaction_id', '$item_code', '$item_name', '$total_pcs', '$description', '$waybill_number', '$price')";
@@ -86,8 +87,9 @@ $sql_update_stock = "UPDATE items SET stock = stock - $total_pcs WHERE id = '$it
     echo "Error: " . $sql_transaction . "<br>" . mysqli_error($conn);
 }
     }else{
-        header("Location: ../Transaction/CreateTransaction.php");
         $_SESSION['No_Permission'] = "You do not have permission to perform this action.";
+        header("Location: ../Transaction/CreateTransaction.php");
+        
     }
       
     
