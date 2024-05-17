@@ -102,6 +102,7 @@ if ($result->num_rows > 0) {
         </div> 
      </div>
     </section>
+    <br>
     <footer>
         <li>Terms & Conditions</li>
         <li>Accessibility</li>
