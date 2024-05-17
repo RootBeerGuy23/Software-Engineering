@@ -1,5 +1,10 @@
 <?php 
 session_start();
+if(isset($_SESSION['NIK'])){
+    // $_SESSION['No_Login'] = "No Login Session Found, Please Login First!";
+    header("location: ../index");
+    exit;
+}
 ?>
 <DOCTYPE html>
 <html lang="en">
@@ -43,6 +48,14 @@ session_start();
             echo "<p style='color:green'>" . $_SESSION['success_message'] . "</p>";
             unset($_SESSION['success_message']);
             }
+
+            if (isset($_SESSION['LoggedIn'])) {
+                echo "<p style='color:red'>" . $_SESSION['LoggedIn'] . "</p>";
+                unset($_SESSION['LoggedIn']);
+                }
+
+            
+            
     ?>
 
    

@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = htmlspecialchars($_POST['Email']);
     $password = htmlspecialchars($_POST['password']);
 
-    // Query untuk mengambil informasi pengguna dari database
+    // Query to get user information from the database
     $sql = "SELECT * FROM users WHERE email=?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $email);
@@ -19,6 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $login_attempts = $row['login_attempts'];
         $is_locked = $row['is_locked'];
         $lockout_time = strtotime($row['lockout_time']);
+        $is_logged_in = $row['is_logged_in']; // Fetch the is_logged_in status
 
         // Check if the account is locked
         if ($is_locked && time() - $lockout_time > 900) { // 15 minutes lockout
@@ -27,21 +28,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit;
         }
 
-        // Memeriksa apakah password cocok dengan hash yang tersimpan
+        // Check if the user is already logged in
+        if ($is_logged_in) { // If is_logged_in is 1, the user is already logged in
+            $_SESSION['LoggedIn'] = "Anda sudah login. Silakan logout terlebih dahulu.";
+            header("location: ../Auth/Login");
+            exit;
+        }
+
+        // Verify password
         if (password_verify($password, $hashed_password)) {
-            // Jika cocok, reset login attempts, set session, dan redirect ke halaman utama
-            $stmt = $conn->prepare("UPDATE users SET login_attempts = 0, is_locked = 0, lockout_time = NULL WHERE email = ?");
+            // If password matches, reset login attempts, set session, and update login status
+            $stmt = $conn->prepare("UPDATE users SET login_attempts = 0, is_locked = 0, lockout_time = NULL, is_logged_in = 1 WHERE email = ?");
             $stmt->bind_param("s", $email);
             $stmt->execute();
 
             $_SESSION['NIK'] = $row['NIK'];
 
-            // Ambil informasi yang diperlukan untuk log login
+            // Get information for login log
             $user_NIK = $row['NIK'];
             $ip_address = $_SERVER['REMOTE_ADDR'];
             $device_info = $_SERVER['HTTP_USER_AGENT'];
 
-            // Query untuk menyimpan informasi login ke dalam tabel login_history
+            // Insert login information into login_history table
             $insert_log_query = "INSERT INTO login_history (NIK, ip_address, device_info) VALUES (?, ?, ?)";
             $stmt = $conn->prepare($insert_log_query);
             $stmt->bind_param("sss", $user_NIK, $ip_address, $device_info);
@@ -50,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("location: ../index");
             exit;
         } else {
-            // Password tidak cocok, increment login attempts
+            // Password does not match, increment login attempts
             $login_attempts++;
             if ($login_attempts >= 3) {
                 // Lock the account after 3 failed attempts
@@ -70,10 +78,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit;
         }
     } else {
-        // Email tidak ditemukan, tampilkan pesan kesalahan
+        // Email not found, display error message
         $_SESSION['error_message'] = "Tidak Ada username atas Email '$email'";
         header("location: ../Auth/Login");
         exit;
     }
 }
+
 ?>

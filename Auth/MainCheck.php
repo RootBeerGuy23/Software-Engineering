@@ -1,4 +1,11 @@
-
+<?php
+session_start();
+if(isset($_SESSION['NIK'])){
+    // $_SESSION['No_Login'] = "No Login Session Found, Please Login First!";
+    header("location: ../index");
+    exit;
+}
+?>
 
 <!DOCTYPE html>
 <html>
@@ -11,6 +18,14 @@
         <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 </head>
 <body>
+
+<?php 
+  if (isset($_SESSION['No_Login'])) {
+    echo "<p style='color:red'>" . $_SESSION['No_Login'] . "</p>";
+    unset($_SESSION['No_Login']);
+    }
+
+?>
     <section>
     <h2>Selamat Datang!</h2>
     <p>Silakan pilih opsi untuk melanjutkan:</p>

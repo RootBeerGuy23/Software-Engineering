@@ -4,10 +4,10 @@ include_once 'Auth/conn.php';
 
 // Memeriksa apakah pengguna sudah login
 if(!isset($_SESSION['NIK'])){
+    $_SESSION['No_Login'] = "No Login Session Found, Please Login First!";
     header("location: Auth/MainCheck");
     exit;
 }
-
 $NIK = $_SESSION['NIK'];
 
 // Query untuk mengambil nama pengguna berdasarkan NIK
@@ -37,13 +37,13 @@ if ($result->num_rows > 0) {
     <header>
         <nav class="navbar">
             <div class="logo">
-            <a href="index.php">
+            <a href="index">
                 <img src="Assets/img/logo.png" alt="Link Logo">
             </a>
             </div>
             
             <div class="menu">
-                <a href="index.php" id="biruin" >Dashboard</a>
+                <a href="index" id="biruin" >Dashboard</a>
                 <a href="#contact">Contact</a>
                 <a href="#services">Services</a>
                 <a href="#about">About</a>  
@@ -74,14 +74,14 @@ if ($result->num_rows > 0) {
                 $class_name = strtolower($warehouse);
                 $content = "<div class='warehouse $class_name'>";
                 $content .= "<h2>Warehouse $warehouse</h2>";
-                $sql = "SELECT id_barang, nama_barang, jumlah_stok, last_audit, last_update, description, image_path FROM warehouse_$warehouse";
+                $sql = "SELECT id_barang, nama_barang, jumlah_stok, last_audit, last_update, description FROM warehouse_$warehouse";
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {
                     $content .= "<table>";
-                    $content .= "<tr><th>ID Barang</th><th>Nama Barang</th><th>Jumlah Stok</th><th>Last Audit</th><th>Last Update</th><th>Description</th><th>Image</th></tr>";
+                    $content .= "<tr><th>ID Barang</th><th>Nama Barang</th><th>Jumlah Stok</th><th>Last Audit</th><th>Last Update</th><th>Description</th></tr>";
                     while($row = $result->fetch_assoc()) {
-                        $content .= "<tr><td>".$row["id_barang"]."</td><td>".$row["nama_barang"]."</td><td>".$row["jumlah_stok"]."</td><td>".$row["last_audit"]."</td><td>".$row["last_update"]."</td><td>".$row["description"]."</td><td><img src=\"".$row["image_path"]."\" alt=\"Image\"></td></tr>";
+                        $content .= "<tr><td>".$row["id_barang"]."</td><td>".$row["nama_barang"]."</td><td>".$row["jumlah_stok"]."</td><td>".$row["last_audit"]."</td><td>".$row["last_update"]."</td><td>".$row["description"]."</td></tr>";
                     }
                     $content .= "</table>";
                 } else {
