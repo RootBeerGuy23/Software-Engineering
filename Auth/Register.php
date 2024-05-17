@@ -60,9 +60,9 @@ session_start();
             <input type="password" placeholder="Retype Password"id="passwordRetype" name="passwordRetype" autocapitalize="off">
             <div class="wrapper">
             <input type="checkbox" onclick="togglePasswordVisibility()" id="check">
-            <label for="check">Show Password</label><br/>
+            <label for="check">Show Password</label>
             </div>
-           <br>
+           <br><br>
         <div class="captcha-box">
             <span id="captchaText"></span>
             <span class="captcha-refresh" onclick="generateCaptcha()"><button type="button">refresh</button></span>
