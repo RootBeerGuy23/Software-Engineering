@@ -135,7 +135,8 @@ footer .kosong{
 }
 
 .captcha-box {
-    width: 300px;
+    width: auto;
+    height: auto;
     display: inline-block;
     padding-top: 8px;
     justify-content: center;

@@ -78,6 +78,7 @@ form{
     background-color: #D6E6F2;
     height: 900px;
     width: 450px;
+    margin-bottom:50px;
 }
 
 input #check{
@@ -99,6 +100,13 @@ form input,select{
     font-size: large;
     padding: 20px;
     color: #79A5C5;
+}
+
+select#department{
+    color: black;
+    font-size: smaller;
+    height: 60px;
+    size: 20px;
 }
 
 form input#check{
@@ -156,6 +164,14 @@ form h4{
 
 h4 a:hover{
     color: #323030;
+}
+
+button#regis{
+    margin-top: 2px;
+}
+
+h4{
+    margin-bottom: 20px;
 }
 
 footer .kosong{

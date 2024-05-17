@@ -46,7 +46,7 @@ session_start();
     <form action="../Action/register_process.php" method="post" id="registrationForm">
     <br><h2>Registration</h2>
     <br>
-        <input type="text" id="username" placeholder="Username" name="username" readonly autocapitalize="off"><br>
+        <input type="text" id="username" placeholder="Username" name="username" autocapitalize="off"><br>
         <input type="email" id="email" placeholder="Email" name="email" autocapitalize="off"><br>
         <input type="date" id="dob" placeholder="DOB" name="dob"><br>
         <input type="text" id="nik" name="nik" oninput="validateNIK(this);" maxlength="5" disabled placeholder="ID (auto generated)" autocapitalize="off"><br>
@@ -71,7 +71,8 @@ session_start();
         </div><br>
         <input type="text" id="captcha" name="captcha" placeholder="Enter the text above" autocapitalize="off"><br>
         <input type="hidden" id="hiddenCaptcha"><br>
-        <button type="submit">Registration</button>
+        <button type="submit" id="regis">Registration</button>
+        <h4>Already have account? <a href="Login.php">Login </a>now</h4>
     </form>
     </div>
 </section>
