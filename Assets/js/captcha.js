@@ -16,6 +16,7 @@ function validateCaptcha() {
 
     if (enteredCaptcha !== generatedCaptcha) {
         alert("Captcha verification failed. Please try again.");
+        generateCaptcha(); // Refresh CAPTCHA
         return false;
     }
     return true;

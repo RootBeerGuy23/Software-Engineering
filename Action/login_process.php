@@ -1,11 +1,12 @@
 <?php
 include_once '../Auth/conn.php';
 session_start();
+date_default_timezone_set('Asia/Jakarta');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = htmlspecialchars($_POST['Email']);
     $password = htmlspecialchars($_POST['password']);
-
+    $current_time = date('Y-m-d H:i:s');
     // Query to get user information from the database
     $sql = "SELECT * FROM users WHERE email=?";
     $stmt = $conn->prepare($sql);
@@ -22,11 +23,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $is_logged_in = $row['is_logged_in']; // Fetch the is_logged_in status
 
         // Check if the account is locked
-        if ($is_locked && time() - $lockout_time > 900) { // 15 minutes lockout
-            $_SESSION['error_message'] = "Akun Anda terkunci. Silakan coba lagi setelah 15 menit.";
+        if ($is_locked && ($current_time - $lockout_time) < 900) { // 15 menit lockout
+            $login_attempts++;
+            // Persiapkan dan jalankan query update
+            $stmt = $conn->prepare("UPDATE users SET is_blocked = 1, login_attempts = ? WHERE email = ?");
+            $stmt->bind_param("si",$login_attempts, $email);
+            $stmt->execute();
+        
+            // Set pesan kesalahan dan arahkan pengguna ke halaman login
+            $_SESSION['error_message'] = "Akun Anda Terblokir. Silakan Hubungi Admin .";
             header("location: ../Auth/Login");
             exit;
         }
+        
 
         // Check if the user is already logged in
         if ($is_logged_in) { // If is_logged_in is 1, the user is already logged in
@@ -62,8 +71,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $login_attempts++;
             if ($login_attempts >= 3) {
                 // Lock the account after 3 failed attempts
-                $stmt = $conn->prepare("UPDATE users SET is_locked = 1, lockout_time = NOW(), login_attempts = ? WHERE email = ?");
-                $stmt->bind_param("is", $login_attempts, $email);
+                $stmt = $conn->prepare("UPDATE users SET is_locked = 1, lockout_time = ?, login_attempts = ? WHERE email = ?");
+                $stmt->bind_param("sis", $current_time, $login_attempts, $email);
                 $stmt->execute();
                 $_SESSION['error_message'] = "Akun Anda terkunci setelah 3 kali percobaan gagal. Silakan coba lagi setelah 15 menit.";
             } else {
@@ -73,6 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $stmt->execute();
                 $_SESSION['error_message'] = "Login gagal. Periksa kembali username dan password Anda.";
             }
+            
 
             header("location: ../Auth/Login");
             exit;
