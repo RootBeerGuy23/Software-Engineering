@@ -22,11 +22,6 @@ session_start();
             <img src="../Assets/img/logo.png" alt="Link Logo">
         </a>
         </div>
-        <div class="menu">
-            <a href="index.html" >Home</a>
-            <a href="#contact">Contact</a>
-            <a href="services.html">Services</a>
-        </div>
     </nav>
     </header>
     <section>
