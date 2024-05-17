@@ -8,14 +8,14 @@ if(isset($_SESSION['NIK'])){
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Store Spehere INC</title>
-        <link rel="icon" href="Assets/img/logo.png">
-        <link rel="stylesheet" href="../Assets/css/maincheck.css">
-        <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store Spehere INC</title>
+    <link rel="icon" href="../Assets/img/logo.png">
+    <link rel="stylesheet" href="../Assets/css/maincheck.css">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 </head>
 <body>
 
@@ -27,13 +27,17 @@ if(isset($_SESSION['NIK'])){
 
 ?>
     <section>
-    <h2>Selamat Datang!</h2>
-    <p>Silakan pilih opsi untuk melanjutkan:</p>
-    <ul>
-        <li><a href="Login">Login</a></li>
-        <li><a href="Register">Registrasi</a></li>
-    </ul>
-    </section>  
+        <h2>Welcome to</h2>
+        <img src="../Assets/img/logo.png" alt="">
+        <h3>Please Login or Register to proceed :</h3>
+        <div class="rapi">
+            <a href="Login.php"> <button >Login</button> </a> <span>or</span>
+            <a href="Register.php"><button>Register</button></a>
+        </div>
+    </section>
+    <footer>
+
+    </footer>
 </body>
 </html>
 
