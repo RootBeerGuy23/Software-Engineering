@@ -68,7 +68,6 @@ body header .navbar a:hover{
     align-items: first baseline;
 }
 
-
 form{
     display: flex;
     flex-direction: column;
@@ -102,18 +101,28 @@ form input,select{
     color: #79A5C5;
 }
 
+form input#check{
+    width: 20px;
+    height: 15px;
+    line-height: normal;
+}
+
+.wrapper .rapi{
+    display: inline;
+    flex-direction: row;
+    justify-content: left;
+}
+
 form .wrapper{
     display: flex;
     justify-content: left;
     text-transform: none;
     width: 300px;
-    margin: 5px;
-    height: 30px;
-    font-size: large;
-    padding: 20px;
+    align-items: baseline;
+    text-align: left;
+    font-size: medium;
+    float: left;
 }
-
-
 
 form select{
     color:rgb(21, 21, 21);
