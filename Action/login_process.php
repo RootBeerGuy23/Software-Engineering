@@ -23,15 +23,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $is_logged_in = $row['is_logged_in']; // Fetch the is_logged_in status
 
         // Check if the account is locked
-        if ($is_locked && ($current_time - $lockout_time) < 900) { // 15 menit lockout
-            $login_attempts++;
+        if ($is_locked && (strtotime($current_time) - strtotime($lockout_time)) < 900) { // 15 menit lockout
             // Persiapkan dan jalankan query update
-            $stmt = $conn->prepare("UPDATE users SET is_blocked = 1, login_attempts = ? WHERE email = ?");
-            $stmt->bind_param("si",$login_attempts, $email);
+            $stmt = $conn->prepare("UPDATE users SET is_blocked = 1 WHERE email = ?");
+            $stmt->bind_param("s", $email);
             $stmt->execute();
         
             // Set pesan kesalahan dan arahkan pengguna ke halaman login
             $_SESSION['error_message'] = "Akun Anda Terblokir. Silakan Hubungi Admin .";
+            header("location: ../Auth/Login");
+            exit;
+        }
+
+        if ($is_locked && (strtotime($current_time) - strtotime($lockout_time)) >= 900) { // 15 menit lockout
+            // Persiapkan dan jalankan query update
+            $stmt = $conn->prepare("UPDATE users SET is_locked = 0, unlocked_time = ? WHERE email = ?");
+            $stmt->bind_param("ss",$current_time, $email);
+            $stmt->execute();
+        
+            //Set pesan kesalahan dan arahkan pengguna ke halaman login
+            $_SESSION['success_message'] = "Akun Anda Sudah Terbuka. Silakan Login Kembali .";
+            $_SESSION['registered_username'] = $email;
             header("location: ../Auth/Login");
             exit;
         }
@@ -68,30 +80,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit;
         } else {
             // Password does not match, increment login attempts
-            $login_attempts++;
-            if ($login_attempts >= 3) {
-                // Lock the account after 3 failed attempts
-                $stmt = $conn->prepare("UPDATE users SET is_locked = 1, lockout_time = ?, login_attempts = ? WHERE email = ?");
-                $stmt->bind_param("sis", $current_time, $login_attempts, $email);
-                $stmt->execute();
-                $_SESSION['error_message'] = "Akun Anda terkunci setelah 3 kali percobaan gagal. Silakan coba lagi setelah 15 menit.";
-            } else {
-                // Update login attempts
-                $stmt = $conn->prepare("UPDATE users SET login_attempts = ? WHERE email = ?");
-                $stmt->bind_param("is", $login_attempts, $email);
-                $stmt->execute();
-                $_SESSION['error_message'] = "Login gagal. Periksa kembali username dan password Anda.";
-            }
-            
+            // Password does not match, increment login attempts
+$login_attempts++;
 
-            header("location: ../Auth/Login");
-            exit;
+if ($login_attempts >= 4 && $is_locked == 1) {
+    // Block the account after 3 failed attempts
+    $stmt = $conn->prepare("UPDATE users SET is_blocked = 1, login_attempts = ?, is_locked = 1 WHERE email = ?");
+    $stmt->bind_param("is", $login_attempts, $email);
+    $stmt->execute();
+    $_SESSION['error_message'] = "Akun Anda terblokir setelah lebih dari 3 kali percobaan gagal. Silakan hubungi admin.";
+} elseif ($login_attempts >= 3) {
+    // Lock the account after 2 failed attempts
+    $stmt = $conn->prepare("UPDATE users SET is_locked = 1, login_attempts = ?, lockout_time = ? WHERE email = ?");
+    $stmt->bind_param("iss", $login_attempts, $current_time, $email);
+    $stmt->execute();
+    $_SESSION['error_message'] = "Akun Anda terkunci setelah 3 kali percobaan gagal. Silakan tunggu 15 menit.";
+} 
+
+    else {
+    // Update login attempts
+    $stmt = $conn->prepare("UPDATE users SET login_attempts = ? WHERE email = ?");
+    $stmt->bind_param("is", $login_attempts, $email);
+    $stmt->execute();
+    $_SESSION['error_message'] = "Login gagal. Periksa kembali username dan password Anda.";
+}
+
+header("location: ../Auth/Login");
+exit;
         }
-    } else {
-        // Email not found, display error message
-        $_SESSION['error_message'] = "Tidak Ada username atas Email '$email'";
-        header("location: ../Auth/Login");
-        exit;
     }
 }
 
