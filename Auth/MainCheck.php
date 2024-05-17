@@ -26,6 +26,7 @@ if(isset($_SESSION['NIK'])){
     }
 
 ?>
+<header></header>
     <section>
         <h2>Welcome to</h2>
         <img src="../Assets/img/logo.png" alt="">
