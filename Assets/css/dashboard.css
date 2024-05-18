@@ -44,6 +44,8 @@ body header .navbar .menu{
 
 section{
     margin-top: 20px;
+    overflow-y: visible;
+    height: auto;
 }
 
 #biruin{
@@ -126,7 +128,7 @@ section{
 }
 
 footer{
-    position:static;
+    position:fixed;
     left: 0;right:0;bottom: 0;
     background-color: #769FCD;
     padding: 15px;
@@ -218,7 +220,7 @@ footer li:hover{
 
     footer{
         padding: 15px;
-        position: static;
+        position: fixed;
         bottom: 0;left: 0;right: 0;
         margin-top: 20px;
     }

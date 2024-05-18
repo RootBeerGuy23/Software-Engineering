@@ -21,7 +21,7 @@ if(isset($_SESSION['NIK'])){
     <header>
     <nav class="navbar">
         <div class="logo">
-        <a href="index.php">
+        <a href="maincheck">
             <img src="../Assets/img/logo.png" alt="Link Logo">
         </a>
         </div>

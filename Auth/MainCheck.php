@@ -19,15 +19,16 @@ if(isset($_SESSION['NIK'])){
 </head>
 <body>
 
-<?php 
+<header>
+</header>
+    <section>
+    <?php 
   if (isset($_SESSION['No_Login'])) {
-    echo "<p style='color:red'>" . $_SESSION['No_Login'] . "</p>";
+    echo "<p style='color:red' ,font-weight:'bold'>" . $_SESSION['No_Login'] . "</p>";
     unset($_SESSION['No_Login']);
     }
 
 ?>
-<header></header>
-    <section>
         <h2>Welcome to</h2>
         <img src="../Assets/img/logo.png" alt="">
         <h3>Please Login or Register to proceed :</h3>
