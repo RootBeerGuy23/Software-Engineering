@@ -14,15 +14,20 @@ if (isset($_SESSION['No_Permission'])) {
     }
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Add New Stock</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Input Transaction</title>
+    <title>Store Spehere INC</title>
+    <link rel="icon" href="../Assets/img/logo.png">
+    <link rel="stylesheet" href="../Assets/css/createtransaction.css">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 </head>
 <body>
-    <h2>Input Transaction</h2>
+    <h2><u>Input Transaction</u></h2>
     <form action="../Action/CreateTransaction_process.php" method="post" id="transactionForm">
         <label for="receiver">Receiver:</label><br>
         <input type="text" id="receiver" name="receiver" required><br>
@@ -93,7 +98,7 @@ if (isset($_SESSION['No_Permission'])) {
         <!-- Button to add new item fields -->
         <button type="button" onclick="addItem()">Tambah Barang</button><br>
         
-        <input type="submit" value="Submit">
+        <input id="submit"type="submit" value="Submit">
     </form>
 
     <script>

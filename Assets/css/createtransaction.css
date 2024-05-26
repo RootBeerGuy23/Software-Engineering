@@ -22,3 +22,56 @@ u{
     font-size: 20px;
     color: black;
 }
+
+form{
+    margin-left: 20px;
+}
+
+input{
+    font-family: 'poppins';
+    margin-bottom: 10px;
+    padding-left: 10px;
+    margin-top: 2px;
+    padding-right: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+select{
+    font-family: 'poppins';
+    margin-bottom: 10px;
+    padding-left: 10px;
+    margin-top: 2px;
+    padding-right: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+button{
+    padding: 7px 50px;
+    border-radius: 20px;
+    background-color: #8fc2e6 ;
+    color: whitesmoke;
+    cursor: pointer;
+    font-size: large;
+    margin-top: 4px;
+    margin-left: px;
+}
+
+button:hover{
+    background-color: #769FCD;
+}
+
+input#submit{
+    width:225px;
+    border-radius: 20px;
+    background-color: #8fc2e6 ;
+    color: whitesmoke;
+    cursor: pointer;
+    font-size: large;
+    margin-top: 12px;
+    text-align: center;
+}
+
+input#submit:hover{
+    background-color: #769FCD;
+}
