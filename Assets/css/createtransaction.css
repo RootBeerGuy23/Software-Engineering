@@ -1,0 +1,24 @@
+:root{
+    background-color: #B9D7EA;
+}
+
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif, 'Roboto slab';
+    text-transform: capitalize;
+    outline: none;border:none;
+    transition: .2 linear;
+}
+
+h2{
+    margin: 20px 0;
+    margin-left: 20px;
+    font-family: 'poppins';
+}
+
+u{
+    font-size: 20px;
+    color: black;
+}

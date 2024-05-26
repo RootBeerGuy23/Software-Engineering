@@ -1,0 +1,84 @@
+:root{
+    background-color: #B9D7EA;
+}
+
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif, 'Roboto slab';
+    text-transform: capitalize;
+    outline: none;border:none;
+    transition: .2 linear;
+}
+
+h1{
+    margin: 20px 0;
+    margin-left: 20px;
+    font-family: 'poppins';
+}
+
+u{
+    font-size: 20px;
+    color: black;
+}
+
+label{
+    margin-left: 20px;
+    padding-right:2px;
+    font-family: 'poppins';
+}
+
+input{
+    font-family: 'poppins';
+    padding-left: 10px;
+    padding-right: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+textarea{
+    margin-top: 2px;
+    margin-left: 20px;
+    width: 350px;
+    padding: 10px;
+    height: 140px;
+    font-family: 'poppins';
+}
+
+input#id{
+    width: auto;
+    padding-left: 10px;
+    text-align: left;
+    align-self: center;
+}
+
+input#stock{
+    width: 60px;
+    padding-left: 10px;
+    text-align: left;
+    align-self: center;
+}
+
+input#file{
+    margin: 2px 10px;
+}
+
+select{
+    width: auto;;
+}
+
+button{
+    padding: 7px 50px;
+    border-radius: 20px;
+    background-color: #8fc2e6 ;
+    color: whitesmoke;
+    cursor: pointer;
+    font-size: large;
+    margin-top: 4px;
+    margin-left: 10px;
+}
+
+button:hover{
+    background-color: #769FCD;
+}

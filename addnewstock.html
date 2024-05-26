@@ -1,34 +1,3 @@
-<?php
-session_start();
-include_once '../Auth/conn.php';
-if (!isset($_SESSION['NIK'])) {
-    header("location: ../Auth/MainCheck");
-    exit;
-}
-// Ambil daftar nama gudang dari database
-$sql = "SELECT table_name FROM information_schema.tables WHERE table_name LIKE 'warehouse_%'";
-$result = $conn->query($sql);
-
-// Inisialisasi array untuk menyimpan nama gudang
-$warehouses = array();
-
-if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-        // Ambil nama gudang dari nama tabel dan simpan ke dalam array
-        $warehouse_name = str_replace("warehouse_", "", $row['table_name']);
-        $warehouses[] = ucfirst(strtolower($warehouse_name));
-    }
-}
-
-
-if (isset($_SESSION['No_Permission'])) {
-    echo "<p style='color:red'>" . $_SESSION['No_Permission'] . "</p>";
-    unset($_SESSION['No_Permission']);
-    }
-
-    
-?>
-
 
 <!DOCTYPE html>
 <html>
