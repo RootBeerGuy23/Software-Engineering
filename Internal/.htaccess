@@ -1,0 +1,19 @@
+# Disable directory browsing
+Options -Indexes
+
+# Block access to specific files
+<Files "server.js">
+    Order allow,deny
+    Deny from all
+</Files>
+
+<Files "stat.js">
+    Order allow,deny
+    Deny from all
+</Files>
+
+# Block access to the .htaccess file itself
+<Files ".htaccess">
+    Order allow,deny
+    Deny from all
+</Files>
