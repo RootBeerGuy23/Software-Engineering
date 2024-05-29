@@ -95,7 +95,7 @@ function SeeNotificationMessage() {
             }
 
             // Array untuk menyimpan nama tabel gudang
-            $warehouses = array("CHINA", "JAKARTA", "BATAM", "BOGOR");
+            $warehouses = array("china", "jakarta", "batam", "bogor");
 
             // Array untuk menyimpan div yang akan dihasilkan
             $divs = array();

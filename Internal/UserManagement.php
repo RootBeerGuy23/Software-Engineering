@@ -28,8 +28,8 @@ if(isset($_SESSION['NIK'])) {
 }
 
 if ($roleStatus != 1) {
-    echo "<script>alert('You Are Not Allowed To Access This Page');</script>";    
-    header("location: ../");
+    echo "<script>alert('You Are Not Allowed To Access This Page');</script>"; 
+    header("location: ../   ");
     exit;   
 }
 
