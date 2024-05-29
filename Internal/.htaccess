@@ -7,10 +7,6 @@ Options -Indexes
     Deny from all
 </Files>
 
-<Files "stat.js">
-    Order allow,deny
-    Deny from all
-</Files>
 
 # Block access to the .htaccess file itself
 <Files ".htaccess">
