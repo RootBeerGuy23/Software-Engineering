@@ -19,6 +19,18 @@ if ($result->num_rows > 0) {
     // Tampilkan nama pengguna
     // echo "Halo, $username!";
 }   
+
+// Fungsi untuk mengambil status notifikasi
+// Fungsi untuk mendapatkan status notifikasi
+function getNotificationStatus() {
+    return file_get_contents('Internal/Notification/NotificationStatus.txt');
+}
+function SeeNotificationMessage() {
+    return file_get_contents('Internal/Notification/NotificationMessage.txt');
+}
+
+// Jika notifikasi diaktifkan, tampilkan notifikasi
+    
 ?>
 
 <!DOCTYPE html>
@@ -32,8 +44,28 @@ if ($result->num_rows > 0) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <script src="Assets/js/servertime.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
+
+<div id="notificationModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h5>Notifikasi</h5>
+        <div class="modal-body">
+            <?php 
+            if(getNotificationStatus() == 1) {
+                echo SeeNotificationMessage();
+            }
+            ?>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-secondary close">Tutup</button>
+        </div>
+    </div>
+</div>
     <header>
         <nav class="navbar">
             <div class="logo">
@@ -113,6 +145,7 @@ if ($result->num_rows > 0) {
 </html>
 
 
+
 <script>
     document.getElementById('logoutLink').addEventListener('click', function(event) {
         event.preventDefault();
@@ -122,3 +155,23 @@ if ($result->num_rows > 0) {
         }
     });
 </script>
+
+<script>
+    // Tampilkan modal notifikasi saat halaman dimuat jika status notifikasi adalah 1
+    $(document).ready(function(){
+        if(<?php echo getNotificationStatus(); ?> == 1) {
+            $('#notificationModal').css('display', 'block'); // Menampilkan modal
+        }
+    });
+
+    // Fungsi untuk menutup modal
+    $('.close').click(function(){
+        $('#notificationModal').css('animation', 'fadeOut 0.3s ease-out'); // Animasi fadeOut saat menyembunyikan modal
+        setTimeout(function(){
+            $('#notificationModal').css('display', 'none'); // Menyembunyikan modal setelah animasi selesai
+        }, 300); // Waktu animasi adalah 0.3 detik (300 milidetik)
+    });
+</script>
+
+
+
