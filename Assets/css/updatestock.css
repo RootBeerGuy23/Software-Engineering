@@ -1,0 +1,93 @@
+:root{
+    background-color: #B9D7EA;
+}
+
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif, 'Roboto slab';
+    text-transform: capitalize;
+    outline: none;border:none;
+    transition: .2 linear;
+}
+
+body{
+    margin: 20px 0;
+    margin-left: 20px;
+    font-family: 'poppins';
+}
+
+form{
+    margin: 20px;
+    font-size: 15px;
+}
+
+form .rapi{
+    display: flex;
+    flex-direction: column;
+}
+
+form button{
+    padding: 7px 20px;
+    border-radius: 20px;
+    background-color: #8fc2e6 ;
+    color: whitesmoke;
+    cursor: pointer;
+    font-size: large;
+    margin-top: 10px;
+}
+
+
+button:hover{
+    background-color: #769FCD;
+}
+
+.rapi label{
+    margin-bottom: 10px;
+}
+
+i{
+    font-size: 18px;
+    color: black;
+}
+
+i:hover{
+    color: whitesmoke;
+}
+
+h2 a{
+    text-decoration: none;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 4px;
+}
+
+th, td {
+    border: 1px solid #3a0000;
+    padding: 8px;
+    text-align: left;
+}
+th {
+    background-color: #3f0000;
+    color: whitesmoke;
+}
+
+input{
+    height: 20px;
+    font-style: 'poppins';
+    background-color: #ffffff;
+}
+
+tr button{
+    margin-left: 2px;
+    background-color: #8fc2e6 ;
+    color: whitesmoke;
+    cursor: pointer;
+    border-radius: 20px;
+    width: 50px;
+    height: 40px;
+}

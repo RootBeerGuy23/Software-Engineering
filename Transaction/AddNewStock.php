@@ -38,12 +38,12 @@ if (isset($_SESSION['No_Permission'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Store Spehere INC</title>
     <link rel="icon" href="../Assets/img/logo.png">
-    <link rel="stylesheet" href="../Assets/css/addstock.css">
-    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="stylesheet" href="../Assets/css/addstock.css">    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <section>
-        <h1><u>Add New Stock</u></h1>
+        <h1><a href="../Transaction/TransAction"><i class="fa-solid fa-arrow-left"></i></a> <u>Add New Stock</u></h1>
     <form method="post" enctype="multipart/form-data" action="../Action/AddNewStock_process.php">
         <label for="id">ID:</label>
         <input id="id" type="number" name="id" required><br><br>

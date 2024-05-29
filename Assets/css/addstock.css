@@ -82,3 +82,16 @@ button{
 button:hover{
     background-color: #769FCD;
 }
+
+i{
+    font-size: 18px;
+    color: black;
+}
+
+i:hover{
+    color: whitesmoke;
+}
+
+h1 a{
+    text-decoration: none;
+}

@@ -24,8 +24,7 @@ header{
 }
 
 body header .navbar{
-    display:flex;
-    flex-direction: row;
+    display:contents;
 }
 
 
@@ -43,8 +42,28 @@ body header .navbar .menu{
     margin-left: 10px;
 }
 
+section{
+    margin-top: 20px;
+    overflow-y: visible;
+    height: auto;
+}
+
 #biruin{
     color: #195496;
+}
+
+
+li{
+    list-style: none;
+    margin-left: 10px;
+    padding-left: 10px;
+    margin-right: 10px;
+    padding-right: 20px;
+    font-size: 100%;
+    margin-top: -25px;
+    font-family: 'Poppins';
+    font-weight: bolder;
+    color: rgb(255, 255, 255);
 }
 
 body header .navbar a{
@@ -58,6 +77,7 @@ body header .navbar a{
     font-weight: bolder;
     color: rgb(255, 255, 255);
 }
+
 
 body header .navbar .menu #register{
     background-color: #D9D9D9;
@@ -80,61 +100,31 @@ body header .navbar .menu .register:hover{
     color: white;
 }
 
-.content{
-      background-image: url(/Assets/img/logistics.jpg);
-      background-size:cover;
-      min-height: 70vh;
-}
-
-body .word{
+section{
+    margin: 20px;
     display: flex;
-    margin-top: 65px;
-    margin-left: 20px;
-    margin-right: 20px;
-    justify-content:space-evenly ;
-}
-
-body .word h3{
-    color: #618BA9;
-}
-
-body .word button{
-    background-color: #769FCD;
-    font-weight: bolder;
-    font-style: 'Poppins';
-    cursor: pointer;
-    border-radius: 20px;
-    padding: 10px;
-    color: #f7f7f7;
-}
-
-footer{
-    position:fixed;
-    left: 0;right:0;bottom: 0;
-    background-color: #769FCD;
-    padding: 15px;
-    display: flex;
-    margin-bottom: 20px;
     flex-direction: column;
-    align-items:last baseline;
-    justify-content: flex-end;
 }
 
-footer li{
-    list-style: none;
-    color: white;
-    font-size: small;
-    margin-right: 90px ;
-    font-weight: lighter;
-    margin-bottom: 2px;
-    padding-top: 8px;
-    margin-right: 80px;
-    margin-top: 20px;
+h2{
+    margin: 20px;
+    margin-bottom: 20px;
+
 }
 
-footer li:hover{
-    color: #195496;
+section a{
+    color: whitesmoke;
+    background-color: #769FCD;
+    width: auto;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    padding: 20px;
 }
+
+a:hover{
+    color: rgb(3, 30, 54);
+}
+
 
 @media screen and (max-width: 730px) {
     header{

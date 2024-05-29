@@ -21,30 +21,20 @@ if(isset($_GET['warehouse'])) {
 <head>
     <title>Update Stock</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        form {
-            display: inline-block;
-            margin: 0;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store Spehere INC</title>
+    <link rel="icon" href="../Assets/img/logo.png">
+    <link rel="stylesheet" href="../Assets/css/updatestock.css">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <h1>Update Stock</h1>
+    <h2><a href="../Transaction/TransAction"><i class="fa-solid fa-arrow-left"></i> </a>Update Stock</h2>
     <form method="get" action="">
-    <label>Choose Warehouse:</label><br>
+    <div class="rapi">
+    <label>Choose Warehouse:</label>
+    <div class="rapi2">
     <?php
     // Ambil daftar nama gudang dari database
     $sql = "SELECT table_name FROM information_schema.tables WHERE table_name LIKE 'warehouse_%'";
@@ -59,6 +49,8 @@ if(isset($_GET['warehouse'])) {
         }
     }
     ?>
+    </div>
+    </diV>
     <button type="submit">Submit</button>
 </form>
 

@@ -23,11 +23,12 @@ if (isset($_SESSION['No_Permission'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Store Spehere INC</title>
     <link rel="icon" href="../Assets/img/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../Assets/css/createtransaction.css">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 </head>
 <body>
-    <h2><u>Input Transaction</u></h2>
+    <h2><a href="../Transaction/TransAction"><i class="fa-solid fa-arrow-left"></i></a> <u>Input Transaction</u></h2>
     <form action="../Action/CreateTransaction_process.php" method="post" id="transactionForm">
         <label for="receiver">Receiver:</label><br>
         <input type="text" id="receiver" name="receiver" required><br>

@@ -45,7 +45,7 @@ if ($result->num_rows > 0) {
             <div class="menu">
                 <a href="index" id="biruin" >Dashboard</a>
                 <a href="#contact">Contact</a>
-                <a href="#services">Services</a>
+                <a href="Transaction/TransAction">Services</a>
                 <a href="#about">About</a>  
                 <li id="gabisadiclick"><i class="fa-solid fa-user"></i> <?php echo 'Hai, ' . $username?><a href="Auth/Logout" id="logoutLink"><i class="fa-solid fa-right-from-bracket"></i><br></a><h4 id="server-time"></h4></li>
                 
