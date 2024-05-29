@@ -1,1 +1,4 @@
-Server akan menjalani maintenance pada tanggal 30-06-2024 Jam 00.00
+1. Harap diingat untuk melakukan proses logout setelah selesai menggunakan sistem (menghindari gantungnya status login).<br>
+2. Pemberitahuan: <br>
+- Server akan menjalani proses maintenance pada tanggal 30 Mei 2024 pukul [22.00 - 03.00]. Server tidak akan bisa diakses selama periode ini. <br>
+- Saat ini sedang terjadi gangguan koneksi internet yang menyebabkan turunnya kecepatan akses internet dan server. <br>
