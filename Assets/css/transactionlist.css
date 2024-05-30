@@ -8,12 +8,18 @@ body{
 
 }
 
-*{
-    margin:0;
-    padding: 0;
-    box-sizing: border-box;
-    transition: .2 linear;
-}
+
+    *{
+        margin:0;
+        padding: 0;
+        box-sizing: border-box;
+        text-decoration: none;
+        font-family: sans-serif, 'Roboto slab';
+        text-transform: capitalize;
+        outline: none;border:none;
+        transition: .2 linear;
+    }
+
 
 i{
     font-size: 18px;
@@ -26,4 +32,14 @@ i:hover{
 
 h2 a{
     text-decoration: none;
+}
+
+button{
+    text-decoration: none;
+    border: none;
+    cursor:pointer;
+}
+
+button:hover{
+    background-color: gray;
 }

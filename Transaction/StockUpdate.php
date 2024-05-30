@@ -19,7 +19,6 @@ if(isset($_GET['warehouse'])) {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Update Stock</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,7 +29,7 @@ if(isset($_GET['warehouse'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <h2><a href="../Transaction/TransAction"><i class="fa-solid fa-arrow-left"></i> </a>Update Stock</h2>
+    <h2><a href="../Transaction/TransAction"><i class="fa-solid fa-arrow-left"></i> </a><u>Update Stock</u></h2>
     <form method="get" action="">
     <div class="rapi">
     <label>Choose Warehouse:</label>

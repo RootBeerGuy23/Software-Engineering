@@ -94,6 +94,10 @@ body .word{
     justify-content:space-evenly ;
 }
 
+h2#notif{
+    margin-top: 1px;
+}
+
 body .word h3{
     color: #618BA9;
 }

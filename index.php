@@ -49,20 +49,16 @@ function SeeNotificationMessage() {
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-
 <div id="notificationModal" class="modal">
     <div class="modal-content">
-        <span class="close">&times;</span>
-        <h5>Notifikasi</h5>
+        <h2 id="notif">Notifikasi <span class="close">&times;</span></h2><br>
         <div class="modal-body">
             <?php 
             if(getNotificationStatus() == 1) {
                 echo SeeNotificationMessage();
             }
             ?>
-        </div>
-        <div class="modal-footer">
-            <button class="btn btn-secondary close">Tutup</button>
+            <br><br>
         </div>
     </div>
 </div>

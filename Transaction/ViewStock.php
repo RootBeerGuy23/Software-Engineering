@@ -16,27 +16,16 @@ if(isset($_GET['warehouse'])) {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>View Stock</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        img {
-            max-width: 100px;
-        }
-    </style>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store Spehere INC</title>
+    <link rel="icon" href="../Assets/img/logo.png">
+    <link rel="stylesheet" href="../Assets/css/viewstock.css">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <h1>View Stock</h1>
+    <h2><a href="../Transaction/TransAction"><i class="fa-solid fa-arrow-left"></i></a> <u>View Stock</u></h2>
     <form method="get" action="">
         <label for="warehouse">Choose Warehouse:</label>
         <select name="warehouse" onchange="this.form.submit()">

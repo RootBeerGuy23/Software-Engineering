@@ -1,0 +1,64 @@
+:root{
+    background-color: #B9D7EA;
+}
+
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif, 'Roboto slab';
+    text-transform: capitalize;
+    outline: none;border:none;
+    transition: .2 linear;
+}
+
+body{
+    margin: 20px 0;
+    margin-left: 30px;
+    font-family: 'poppins';
+}
+
+form{
+    margin: 25px;
+    font-size: 15px;
+}
+
+
+button:hover{
+    background-color: #769FCD;
+}
+
+label{
+    margin-bottom: 10px;
+    margin-left: -18px;
+
+}
+
+i{
+    font-size: 18px;
+    color: black;
+}
+
+i:hover{
+    color: whitesmoke;
+}
+
+h2 a{
+    text-decoration: none;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 4px;
+}
+
+th, td {
+    border: 1px solid #3a0000;
+    padding: 8px;
+    text-align: center;
+}
+th {
+    background-color: #3f0000;
+    color: whitesmoke;
+}
