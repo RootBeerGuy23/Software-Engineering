@@ -31,7 +31,6 @@
         <a href="StockUpdate">Update stock</a><br>
         <a href="TransactionList">Transaction List</a><br>
         <a href="ViewStock">View all stock</a><br>
-        <a href="ViewWareHouseStock">View warehouse stock</a><br>
     </section>
 </body>
 </html>
