@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const fs = require('fs');
-const ping = require('ping');
+const net = require('net');
 const path = require('path');
 const moment = require('moment-timezone');
 const mysql = require('mysql');
@@ -16,16 +16,60 @@ const konfigurasi = {
   port: 3306
 };
 
-// Koneksi database
-const connection = mysql.createConnection(konfigurasi);
+let connection;
+
+// Fungsi untuk membuat koneksi database
+function createDbConnection() {
+  connection = mysql.createConnection(konfigurasi);
+
+  connection.connect(err => {
+    if (err) {
+      console.error('Error connecting to database:', err);
+      setTimeout(createDbConnection, 2000); // Coba hubungkan kembali setelah 2 detik
+    } else {
+      console.log('Connected to database');
+    }
+  });
+
+  connection.on('error', err => {
+    console.error('Database error:', err);
+    if (err.code === 'PROTOCOL_CONNECTION_LOST' || err.code === 'ECONNRESET') {
+      createDbConnection(); // Coba hubungkan kembali jika koneksi terputus
+    } else {
+      throw err;
+    }
+  });
+}
+
+// Inisialisasi koneksi database
+createDbConnection();
 
 // Array yang mendefinisikan daftar server yang ingin di-ping
 const servers = [
-  { name: 'Database SQL', host: 'localhost' },
-  { name: 'SpehereINC Web Service', host: 'localhost' },
+  { name: 'Database SQL', host: 'localhost', port: 3306, pingTime: null },
+  { name: 'SpehereINC Web Service', host: 'localhost', port: 80, pingTime: null },
   // Tambahkan server lain jika diperlukan
 ];
 
+// Fungsi untuk memeriksa port terbuka
+function checkPortOpen(host, port) {
+  return new Promise((resolve) => {
+    const socket = new net.Socket();
+    const timeout = 2000; // 2 detik timeout
+
+    socket.setTimeout(timeout);
+    socket.on('connect', () => {
+      socket.destroy();
+      resolve(true);
+    }).on('timeout', () => {
+      socket.destroy();
+      resolve(false);
+    }).on('error', () => {
+      socket.destroy();
+      resolve(false);
+    }).connect(port, host);
+  });
+}
 
 // Fungsi untuk menyimpan data ping ke database
 function savePingDataToDatabase(pingResults) {
@@ -58,25 +102,28 @@ async function updatePingData() {
 
   for (const server of servers) {
     try {
-      const result = await ping.promise.probe(server.host);
-      const currentTime = moment().toISOString();
-      const lastPingTime = server.pingTime !== null ? server.pingTime : null;
-      const currentPingTime = result.alive ? result.time : null;
+      const startTime = moment();
+      const portOpen = await checkPortOpen(server.host, server.port);
+      const endTime = moment();
+      const currentPingTime = portOpen ? endTime.diff(startTime) : null;
 
       pingResults.push({
         serverName: server.name,
         host: server.host,
-        isAlive: result.alive,
-        pingTime: currentPingTime, // Menggunakan waktu ping saat ini
-        lastPing: lastPingTime, // Menggunakan waktu ping terakhir
-        timestamp: currentTime,
+        isAlive: portOpen,
+        pingTime: currentPingTime,
+        lastPing: server.pingTime !== null ? server.pingTime : null,
+        timestamp: endTime.toISOString(),
       });
 
       // Update server status dan waktu ping terakhir
-      server.isAlive = result.alive;
-      server.pingTime = currentPingTime; // Perbarui waktu ping terakhir
+      server.isAlive = portOpen;
+      server.pingTime = currentPingTime;
+
+      // Log status server
+      console.log(`Server: ${server.name}, Host: ${server.host}, Port: ${server.port}, IsAlive: ${portOpen}, PingTime: ${currentPingTime}`);
     } catch (error) {
-      console.error(`Ping error for ${server.host}: ${error.message}`);
+      console.error(`Ping error for ${server.host}:${server.port} - ${error.message}`);
     }
   }
 
@@ -99,14 +146,12 @@ async function shutdown() {
     host: server.host,
     isAlive: false,
     pingTime: null,
-    lastPing: server.pingTime !== null ? server.pingTime : null, // Perbaiki di sini
+    lastPing: server.pingTime !== null ? server.pingTime : null,
     timestamp: currentTime,
   }));
 
-  
   const filePath = path.join(__dirname, '..', 'Assets', 'api', 'servers', 'PingResult.json');
-
-    fs.writeFileSync(filePath, JSON.stringify(pingResults, null, 2));
+  fs.writeFileSync(filePath, JSON.stringify(pingResults, null, 2));
   console.log('Data JSON updated on server shutdown');
 
   try {
@@ -124,7 +169,7 @@ process.on('SIGTERM', shutdown);
 
 // API endpoint untuk mendapatkan data ping
 app.get('../Assets/api/servers', (req, res) => {
-    const filePath = path.join(__dirname, '..', 'Assets', 'api', 'servers', 'PingResult.json');
+  const filePath = path.join(__dirname, '..', 'Assets', 'api', 'servers', 'PingResult.json');
   fs.readFile(filePath, 'utf8', (err, data) => {
     if (err) {
       console.error(err);
@@ -147,7 +192,9 @@ app.use(express.static(path.join(__dirname, 'status')));
 
 // Interval untuk memperbarui data ping secara berkala (misalnya setiap 5 detik)
 setInterval(() => {
-  updatePingData();
+  updatePingData().catch(error => {
+    console.error('Error during ping update:', error);
+  });
 }, 5000);
 
 // Server listening on port 8080
@@ -156,4 +203,6 @@ app.listen(8080, () => {
 });
 
 // Panggil fungsi updatePingData untuk menjalankan proses update dan insert data saat aplikasi berjalan
-updatePingData();
+updatePingData().catch(error => {
+  console.error('Initial ping update error:', error);
+});
